@@ -3,7 +3,7 @@ import { ref, computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { validateUser } from '../data/store'
 
-const { t } = useI18n()
+const { t, locale } = useI18n()
 const emit = defineEmits(['submit', 'error'])
 
 const BIO_MAX_LENGTH = 160
@@ -18,6 +18,28 @@ const bioRemaining = computed(() => BIO_MAX_LENGTH - bioLength.value)
 const bioCounterClass = computed(() => {
   if (bioLength.value > BIO_MAX_LENGTH) return 'char-counter--over'
   if (bioLength.value >= BIO_MAX_LENGTH - 20) return 'char-counter--warning'
+  return ''
+})
+
+const formatNumber = (value) => {
+  return new Intl.NumberFormat(locale.value).format(value)
+}
+
+const formattedCharCounterText = computed(() => {
+  return t('charCounter.format', { 
+    current: formatNumber(bioLength.value), 
+    max: formatNumber(BIO_MAX_LENGTH) 
+  })
+})
+
+const formattedCounterHint = computed(() => {
+  const remaining = bioRemaining.value
+  if (remaining < 0) {
+    return t('charCounter.over', { count: formatNumber(Math.abs(remaining)) })
+  }
+  if (remaining <= 20) {
+    return t('charCounter.remaining', { count: formatNumber(remaining) })
+  }
   return ''
 })
 
@@ -71,9 +93,8 @@ const handleSubmit = () => {
           :maxlength="BIO_MAX_LENGTH"
         ></textarea>
         <span class="char-counter" :class="bioCounterClass">
-          {{ t('charCounter.format', { current: bioLength, max: BIO_MAX_LENGTH }) }}
-          <span v-if="bioRemaining < 0" class="char-counter-hint"> {{ t('charCounter.over', { count: Math.abs(bioRemaining) }) }}</span>
-          <span v-else-if="bioRemaining <= 20" class="char-counter-hint"> {{ t('charCounter.remaining', { count: bioRemaining }) }}</span>
+          {{ formattedCharCounterText }}
+          <span v-if="formattedCounterHint" class="char-counter-hint"> {{ formattedCounterHint }}</span>
         </span>
       </label>
       <p v-if="errorMessage" class="error-message">{{ errorMessage }}</p>

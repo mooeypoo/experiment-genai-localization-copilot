@@ -3,7 +3,7 @@ import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import CommentItem from './CommentItem.vue'
 
-const { t } = useI18n()
+const { t, locale, n } = useI18n()
 
 const props = defineProps({
   comments: {
@@ -23,13 +23,22 @@ const userMap = computed(() => {
 })
 
 const resolveAuthor = (comment) => userMap.value.get(comment.authorId) || null
+
+const formatNumber = (value) => {
+  return new Intl.NumberFormat(locale.value).format(value)
+}
+
+const formattedCommentsCount = computed(() => {
+  const count = props.comments.length
+  return t('post.commentsCount', count, { count: formatNumber(count) })
+})
 </script>
 
 <template>
   <section class="stack">
     <header class="section-header">
       <h2>{{ t('post.conversation') }}</h2>
-      <p>{{ t('post.commentsCount', props.comments.length) }}</p>
+      <p>{{ formattedCommentsCount }}</p>
     </header>
     <div v-if="comments.length" class="stack">
       <CommentItem

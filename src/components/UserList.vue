@@ -20,13 +20,22 @@ const sortedUsers = computed(() => {
   })
   return [...props.users].sort((a, b) => collator.compare(a.name, b.name))
 })
+
+const formatNumber = (value) => {
+  return new Intl.NumberFormat(locale.value).format(value)
+}
+
+const formattedCommunityCount = computed(() => {
+  const count = props.users.length
+  return t('user.communityCount', count, { count: formatNumber(count) })
+})
 </script>
 
 <template>
   <section class="stack">
     <header class="section-header">
       <h2>{{ t('user.communityTitle') }}</h2>
-      <p>{{ t('user.communityCount', props.users.length) }}</p>
+      <p>{{ formattedCommunityCount }}</p>
     </header>
     <div class="grid">
       <RouterLink

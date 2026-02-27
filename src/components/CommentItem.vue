@@ -1,7 +1,8 @@
 <script setup>
+import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 
-const { t } = useI18n()
+const { t, locale } = useI18n()
 
 const props = defineProps({
   comment: {
@@ -14,14 +15,14 @@ const props = defineProps({
   }
 })
 
-const formatDate = (value) => {
-  if (!value) return ''
-  const date = new Date(value)
-  return new Intl.DateTimeFormat('en-US', {
+const formattedDate = computed(() => {
+  if (!props.comment.createdAt) return ''
+  const date = new Date(props.comment.createdAt)
+  return new Intl.DateTimeFormat(locale.value, {
     dateStyle: 'medium',
     timeStyle: 'short'
   }).format(date)
-}
+})
 </script>
 
 <template>
@@ -35,7 +36,7 @@ const formatDate = (value) => {
           </span>
           <span v-else>{{ t('comment.unknownAuthor') }}</span>
         </p>
-        <p class="comment-date">{{ formatDate(comment.createdAt) }}</p>
+        <p class="comment-date">{{ formattedDate }}</p>
       </div>
     </div>
     <p class="comment-body">{{ comment.body }}</p>
