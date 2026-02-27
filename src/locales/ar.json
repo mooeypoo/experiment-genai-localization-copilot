@@ -1,0 +1,72 @@
+{
+  "app": {
+    "brand": {
+      "kicker": "إشارة",
+      "title": "Pulseboard",
+      "subtitle": "تطبيق عرض اجتماعي صغير مصمم لإجراء تجارب سريعة."
+    },
+    "nav": {
+      "post": "منشور",
+      "users": "المستخدمون"
+    },
+    "viewingAs": "عرض باسم",
+    "language": "اللغة"
+  },
+  "post": {
+    "title": "مدينة من الإشارات الصغيرة",
+    "conversation": "حوار",
+    "commentsCount": "{count} تعليقات | تعليق واحد | {count} تعليقات",
+    "noComments": "لا توجد تعليقات حتى الآن. كن أول من يضيف واحدة."
+  },
+  "comment": {
+    "addTitle": "أضف تعليق",
+    "addSubtitle": "اكتب باسم المستخدم المختار للعرض.",
+    "messageLabel": "الرسالة",
+    "messagePlaceholder": "شارك فكرة...",
+    "submitButton": "نشر التعليق",
+    "unknownAuthor": "مؤلف غير معروف"
+  },
+  "user": {
+    "createTitle": "إنشاء مستخدم",
+    "createSubtitle": "أضف صوتًا جديدًا إلى خلاصة العرض.",
+    "nameLabel": "اسم العرض",
+    "namePlaceholder": "الاسم الكامل",
+    "pronounsLabel": "الضمائر",
+    "pronounsOptions": {
+      "sheHer": "هي",
+      "heHim": "هو",
+      "theyThem": "هم",
+      "any": "أي ضمائر"
+    },
+    "bioLabel": "السيرة الذاتية (اختياري)",
+    "bioPlaceholder": "سيرة ذاتية قصيرة",
+    "submitButton": "إنشاء مستخدم",
+    "communityTitle": "المجتمع",
+    "communityCount": "{count} أشخاص في الغرفة | شخص واحد في الغرفة | {count} أشخاص في الغرفة"
+  },
+  "profile": {
+    "viewActivity": {
+      "her": "عرض نشاطها ومساهماتها.",
+      "his": "عرض نشاطه ومساهماته.",
+      "their": "عرض نشاطهم ومساهماتهم."
+    },
+    "notFound": "لم نتمكن من العثور على هذا الملف الشخصي."
+  },
+  "validation": {
+    "displayNameRequired": "اسم العرض مطلوب.",
+    "displayNameEmpty": "اسم العرض لا يمكن أن يكون فارغًا.",
+    "displayNameTooLong": "اسم العرض لا يمكن أن يتجاوز 100 حرف.",
+    "bioTooLong": "السيرة الذاتية لا يمكن أن تتجاوز 160 حرفًا.",
+    "invalidPronouns": "اختيار الضمائر غير صحيح.",
+    "commentBodyRequired": "نص التعليق مطلوب.",
+    "commentEmpty": "التعليق لا يمكن أن يكون فارغًا.",
+    "commentTooLong": "التعليق لا يمكن أن يتجاوز 500 حرف.",
+    "authorRequired": "معرف المؤلف مطلوب.",
+    "invalidAuthor": "معرف المؤلف غير صحيح."
+  },
+  "charCounter": {
+    "format": "{current} / {max}",
+    "over": "({count} إضافي)",
+    "remaining": "({count} متبقي)"
+  }
+}

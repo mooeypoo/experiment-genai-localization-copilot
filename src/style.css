@@ -291,7 +291,7 @@ a {
 }
 
 .comment-card {
-  border-left: 4px solid #f6c8a4;
+  border-inline-start: 4px solid #f6c8a4;
 }
 
 .comment-author {
@@ -356,7 +356,7 @@ a {
   margin-top: 6px;
   font-size: 12px;
   color: #8b7a6e;
-  text-align: right;
+  text-align: end;
   transition: color 0.2s ease;
 }
 
@@ -502,7 +502,7 @@ a {
   background: #fef9f3;
   color: #6b5a4f;
   font-size: 13px;
-  border-left: 3px solid var(--peach);
+  border-inline-start: 3px solid var(--peach);
 }
 
 .empty-state {
@@ -566,4 +566,46 @@ a {
   .user-card {
     grid-template-columns: 1fr;
   }
+}
+
+/* RTL (Right-to-Left) Language Support */
+[dir="rtl"] .user-card {
+  grid-template-columns: auto 1fr;
+  direction: rtl;
+}
+
+[dir="rtl"] .profile-header {
+  direction: rtl;
+}
+
+[dir="rtl"] .form-field input,
+[dir="rtl"] .form-field textarea,
+[dir="rtl"] .form-field select {
+  direction: rtl;
+  text-align: right;
+}
+
+[dir="rtl"] select option {
+  direction: rtl;
+}
+
+[dir="rtl"] .viewing-selector {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .header-actions {
+  flex-direction: row;
+}
+
+[dir="rtl"] .post-meta {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .app-header {
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+[dir="rtl"] .nav-brand {
+  text-align: right;
 }

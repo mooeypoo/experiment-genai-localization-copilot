@@ -1,0 +1,72 @@
+{
+  "app": {
+    "brand": {
+      "kicker": "سیگنال",
+      "title": "Pulseboard",
+      "subtitle": "یک برنامه اجتماعی کوچک برای آزمایش‌های سریع."
+    },
+    "nav": {
+      "post": "پست",
+      "users": "کاربران"
+    },
+    "viewingAs": "در حال مشاهده به عنوان",
+    "language": "زبان"
+  },
+  "post": {
+    "title": "شهری از سیگنال‌های کوچک",
+    "conversation": "گفتگو",
+    "commentsCount": "{count} نظر | یک نظر | {count} نظر",
+    "noComments": "هنوز نظری وجود ندارد. اولین نفری باش که یک نظر اضافه کند."
+  },
+  "comment": {
+    "addTitle": "افزودن نظر",
+    "addSubtitle": "به عنوان کاربر انتخاب‌شده برای مشاهده بنویس.",
+    "messageLabel": "پیام",
+    "messagePlaceholder": "یک فکر به اشتراک بگذار...",
+    "submitButton": "ارسال نظر",
+    "unknownAuthor": "نویسنده نامشخص"
+  },
+  "user": {
+    "createTitle": "ایجاد کاربر",
+    "createSubtitle": "یک صدای جدید را به فید نمایش اضافه کن.",
+    "nameLabel": "نام نمایشی",
+    "namePlaceholder": "نام کامل",
+    "pronounsLabel": "ضمایر",
+    "pronounsOptions": {
+      "sheHer": "او (زن)",
+      "heHim": "او (مرد)",
+      "theyThem": "آنها",
+      "any": "هر ضمیری"
+    },
+    "bioLabel": "بیوگرافی (اختیاری)",
+    "bioPlaceholder": "بیوگرافی کوتاه",
+    "submitButton": "ایجاد کاربر",
+    "communityTitle": "جامعه",
+    "communityCount": "{count} نفر در اتاق | یک نفر در اتاق | {count} نفر در اتاق"
+  },
+  "profile": {
+    "viewActivity": {
+      "her": "فعالیت و مشارکت‌های او را ببین.",
+      "his": "فعالیت و مشارکت‌های او را ببین.",
+      "their": "فعالیت و مشارکت‌های آنها را ببین."
+    },
+    "notFound": "ما نتوانستیم این پروفایل را پیدا کنیم."
+  },
+  "validation": {
+    "displayNameRequired": "نام نمایشی الزامی است.",
+    "displayNameEmpty": "نام نمایشی نمی‌تواند خالی باشد.",
+    "displayNameTooLong": "نام نمایشی نمی‌تواند از 100 کاراکتر بیشتر باشد.",
+    "bioTooLong": "بیوگرافی نمی‌تواند از 160 کاراکتر بیشتر باشد.",
+    "invalidPronouns": "انتخاب ضمیر نامعتبر است.",
+    "commentBodyRequired": "متن نظر الزامی است.",
+    "commentEmpty": "نظر نمی‌تواند خالی باشد.",
+    "commentTooLong": "نظر نمی‌تواند از 500 کاراکتر بیشتر باشد.",
+    "authorRequired": "شناسه نویسنده الزامی است.",
+    "invalidAuthor": "شناسه نویسنده نامعتبر است."
+  },
+  "charCounter": {
+    "format": "{current} / {max}",
+    "over": "({count} اضافی)",
+    "remaining": "({count} باقی)"
+  }
+}

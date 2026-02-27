@@ -7,7 +7,10 @@ const { locale } = useI18n()
 const languages = [
   { code: 'en', name: 'English' },
   { code: 'fr', name: 'Français' },
-  { code: 'es', name: 'Español' }
+  { code: 'es', name: 'Español' },
+  { code: 'he', name: 'עברית' },
+  { code: 'ar', name: 'العربية' },
+  { code: 'fa', name: 'فارسی' }
 ]
 
 const handleChange = (event) => {

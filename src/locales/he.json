@@ -1,0 +1,72 @@
+{
+  "app": {
+    "brand": {
+      "kicker": "אות",
+      "title": "Pulseboard",
+      "subtitle": "אפליקציית דמו חברתית קטנה הבנויה לניסויים מהירים."
+    },
+    "nav": {
+      "post": "פוסט",
+      "users": "משתמשים"
+    },
+    "viewingAs": "צופה כ־",
+    "language": "שפה"
+  },
+  "post": {
+    "title": "עיר של אותות קטנות",
+    "conversation": "שיחה",
+    "commentsCount": "{count} תגובות | תגובה אחת | {count} תגובות",
+    "noComments": "עדיין אין תגובות. היה הראשון להוסיף אחת."
+  },
+  "comment": {
+    "addTitle": "הוסף תגובה",
+    "addSubtitle": "כתוב בשם המשתמש שנבחר כרואה.",
+    "messageLabel": "הודעה",
+    "messagePlaceholder": "שתף מחשבה...",
+    "submitButton": "פרסם תגובה",
+    "unknownAuthor": "מחבר לא ידוע"
+  },
+  "user": {
+    "createTitle": "צור משתמש",
+    "createSubtitle": "הוסף קול חדש לעדכון ההדמיה.",
+    "nameLabel": "שם תצוגה",
+    "namePlaceholder": "שם מלא",
+    "pronounsLabel": "כינויים",
+    "pronounsOptions": {
+      "sheHer": "היא",
+      "heHim": "הוא",
+      "theyThem": "הם",
+      "any": "כл כינויים"
+    },
+    "bioLabel": "ביוגרפיה (אופציונלי)",
+    "bioPlaceholder": "ביוגרפיה קצרה",
+    "submitButton": "צור משתמש",
+    "communityTitle": "קהילה",
+    "communityCount": "{count} אנשים בחדר | אדם אחד בחדר | {count} אנשים בחדר"
+  },
+  "profile": {
+    "viewActivity": {
+      "her": "צפי בפעילותה וביצירתה.",
+      "his": "צפי בפעילותו ביצירתו.",
+      "their": "צפי בפעילותם וביצירתם."
+    },
+    "notFound": "לא הצלחנו למצוא את הפרופיל הזה."
+  },
+  "validation": {
+    "displayNameRequired": "שם התצוגה הוא חובה.",
+    "displayNameEmpty": "שם התצוגה לא יכול להיות ריק.",
+    "displayNameTooLong": "שם התצוגה לא יכול עלון על 100 תווים.",
+    "bioTooLong": "הביוגרפיה לא יכולה עלון על 160 תווים.",
+    "invalidPronouns": "בחירת כינויים לא תקינה.",
+    "commentBodyRequired": "גוף התגובה הוא חובה.",
+    "commentEmpty": "התגובה לא יכולה להיות ריקה.",
+    "commentTooLong": "התגובה לא יכולה עלון על 500 תווים.",
+    "authorRequired": "זהות המחבר היא חובה.",
+    "invalidAuthor": "זהות מחבר לא תקינה."
+  },
+  "charCounter": {
+    "format": "{current} / {max}",
+    "over": "({count} עלון)",
+    "remaining": "({count} נותר)"
+  }
+}
