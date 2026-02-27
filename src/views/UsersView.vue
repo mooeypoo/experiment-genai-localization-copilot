@@ -11,8 +11,12 @@ const loadData = () => {
 }
 
 const handleCreateUser = (payload) => {
-  createUser(payload)
-  loadData()
+  try {
+    createUser(payload)
+    loadData()
+  } catch (error) {
+    console.error('Failed to create user:', error.message)
+  }
 }
 
 onMounted(loadData)

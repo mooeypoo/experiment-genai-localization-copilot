@@ -46,15 +46,55 @@ export const getComments = (postId) => {
   return clone(state.comments.filter((comment) => comment.postId === postId))
 }
 
-export const createUser = ({ name, handle, bio, location }) => {
+const generateHandle = (name) => {
+  const base = name
+    .toLowerCase()
+    .replace(/[^a-z0-9]/g, '')
+    .slice(0, 15)
+  
+  let handle = base
+  let suffix = 1
+  
+  while (state.users.some((user) => user.handle === handle)) {
+    handle = `${base}${suffix}`
+    suffix++
+  }
+  
+  return handle || `user${counters.user + 1}`
+}
+
+export const validateUser = (name, bio) => {
+  if (!name || typeof name !== 'string') {
+    return 'Display name is required.'
+  }
+  const trimmedName = name.trim()
+  if (trimmedName.length === 0) {
+    return 'Display name cannot be empty.'
+  }
+  if (trimmedName.length > 100) {
+    return 'Display name cannot exceed 100 characters.'
+  }
+  if (bio && typeof bio === 'string' && bio.trim().length > 500) {
+    return 'Bio cannot exceed 500 characters.'
+  }
+  return null
+}
+
+export const createUser = ({ name, bio }) => {
+  const validationError = validateUser(name, bio)
+  if (validationError) {
+    throw new Error(validationError)
+  }
+  
   counters.user += 1
   const id = `u${counters.user}`
+  const handle = generateHandle(name)
   const nextUser = {
     id,
-    name,
+    name: name.trim(),
     handle,
-    bio: bio || '',
-    location: location || '',
+    bio: bio ? bio.trim() : '',
+    location: '',
     avatar: `https://api.dicebear.com/7.x/shapes/svg?seed=signal-${id}`
   }
   state.users.push(nextUser)
