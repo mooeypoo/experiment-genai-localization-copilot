@@ -283,6 +283,16 @@ a {
   gap: 16px;
 }
 
+.user-link {
+  color: inherit;
+}
+
+.user-link:focus-visible {
+  outline: 2px solid var(--sunrise);
+  outline-offset: 4px;
+  border-radius: 24px;
+}
+
 .user-card {
   display: grid;
   grid-template-columns: auto 1fr;
@@ -295,6 +305,12 @@ a {
   height: 64px;
   border-radius: 18px;
   object-fit: cover;
+}
+
+.avatar-lg {
+  width: 96px;
+  height: 96px;
+  border-radius: 28px;
 }
 
 .user-name {
@@ -317,6 +333,35 @@ a {
   margin: 8px 0 0;
   font-size: 12px;
   color: #6b5a4f;
+}
+
+.profile-card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.profile-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.profile-name {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.profile-handle {
+  margin: 6px 0 0;
+  color: #6b5a4f;
+  font-size: 13px;
+}
+
+.profile-bio {
+  margin: 0;
+  font-size: 15px;
 }
 
 .empty-state {

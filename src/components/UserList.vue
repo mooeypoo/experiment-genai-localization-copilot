@@ -1,4 +1,5 @@
 <script setup>
+import { RouterLink } from 'vue-router'
 import UserCard from './UserCard.vue'
 
 const props = defineProps({
@@ -16,7 +17,14 @@ const props = defineProps({
       <p>{{ users.length }} people in the room</p>
     </header>
     <div class="grid">
-      <UserCard v-for="user in users" :key="user.id" :user="user" />
+      <RouterLink
+        v-for="user in users"
+        :key="user.id"
+        class="user-link"
+        :to="`/users/${user.id}`"
+      >
+        <UserCard :user="user" />
+      </RouterLink>
     </div>
   </section>
 </template>

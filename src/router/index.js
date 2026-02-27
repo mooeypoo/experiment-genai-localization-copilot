@@ -1,6 +1,7 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 import PostView from '../views/PostView.vue'
 import UsersView from '../views/UsersView.vue'
+import UserProfileView from '../views/UserProfileView.vue'
 
 const routes = [
   {
@@ -12,6 +13,11 @@ const routes = [
     path: '/users',
     name: 'users',
     component: UsersView
+  },
+  {
+    path: '/users/:id',
+    name: 'user-profile',
+    component: UserProfileView
   }
 ]
 
