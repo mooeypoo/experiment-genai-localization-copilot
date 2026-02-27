@@ -61,14 +61,40 @@ export const createUser = ({ name, handle, bio, location }) => {
   return clone(nextUser)
 }
 
+export const validateComment = (body, authorId) => {
+  if (!body || typeof body !== 'string') {
+    return 'Comment body is required.'
+  }
+  const trimmed = body.trim()
+  if (trimmed.length === 0) {
+    return 'Comment cannot be empty.'
+  }
+  if (trimmed.length > 500) {
+    return 'Comment cannot exceed 500 characters.'
+  }
+  if (!authorId) {
+    return 'Author ID is required.'
+  }
+  const author = state.users.find((user) => user.id === authorId)
+  if (!author) {
+    return 'Invalid author ID.'
+  }
+  return null
+}
+
 export const createComment = ({ postId, authorId, body }) => {
+  const validationError = validateComment(body, authorId)
+  if (validationError) {
+    throw new Error(validationError)
+  }
+  
   counters.comment += 1
   const id = `c${counters.comment}`
   const nextComment = {
     id,
     postId,
     authorId,
-    body,
+    body: body.trim(),
     createdAt: new Date().toISOString()
   }
   state.comments.push(nextComment)

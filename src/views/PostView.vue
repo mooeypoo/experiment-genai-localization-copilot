@@ -20,12 +20,16 @@ const loadData = () => {
 }
 
 const handleCommentSubmit = ({ authorId, body }) => {
-  createComment({
-    postId,
-    authorId,
-    body
-  })
-  comments.value = getComments(postId)
+  try {
+    createComment({
+      postId,
+      authorId,
+      body
+    })
+    comments.value = getComments(postId)
+  } catch (error) {
+    console.error('Failed to create comment:', error.message)
+  }
 }
 
 onMounted(loadData)
@@ -34,7 +38,7 @@ onMounted(loadData)
 <template>
   <section class="view">
     <PostCard v-if="post" :post="post" :author="author" />
-    <CommentForm v-if="users.length" :users="users" @submit="handleCommentSubmit" />
+    <CommentForm @submit="handleCommentSubmit" />
     <CommentList :comments="comments" :users="users" />
   </section>
 </template>
