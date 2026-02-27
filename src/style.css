@@ -80,6 +80,23 @@ a {
   gap: 6px;
 }
 
+.nav-brand-link {
+  text-decoration: none;
+  color: inherit;
+  transition: opacity 0.2s ease;
+  cursor: pointer;
+}
+
+.nav-brand-link:hover {
+  opacity: 0.8;
+}
+
+.nav-brand-link:focus-visible {
+  outline: 2px solid var(--sunrise);
+  outline-offset: 4px;
+  border-radius: 8px;
+}
+
 .nav-kicker {
   margin: 0;
   font-size: 12px;

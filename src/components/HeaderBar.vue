@@ -17,11 +17,13 @@ const props = defineProps({
 
 <template>
   <header class="app-header">
-    <div class="nav-brand">
-      <p class="nav-kicker">{{ t('app.brand.kicker') }}</p>
-      <h1 class="nav-title">{{ t('app.brand.title') }}</h1>
-      <p class="nav-subtitle">{{ t('app.brand.subtitle') }}</p>
-    </div>
+    <RouterLink to="/" class="nav-brand-link">
+      <div class="nav-brand">
+        <p class="nav-kicker">{{ t('app.brand.kicker') }}</p>
+        <h1 class="nav-title">{{ t('app.brand.title') }}</h1>
+        <p class="nav-subtitle">{{ t('app.brand.subtitle') }}</p>
+      </div>
+    </RouterLink>
     <div class="header-actions">
       <LanguageSwitcher />
       <ViewingAsSelector v-if="users.length" :users="users" />
