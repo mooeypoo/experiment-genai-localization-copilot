@@ -3,7 +3,7 @@ import { computed, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useViewingUser } from '../composables/useViewingUser'
 
-const { t } = useI18n()
+const { t, locale } = useI18n()
 
 const props = defineProps({
   users: {
@@ -23,6 +23,14 @@ const currentUser = computed(() => {
   return props.users.find((user) => user.id === viewingUserId.value)
 })
 
+const sortedUsers = computed(() => {
+  const collator = new Intl.Collator(locale.value, {
+    sensitivity: 'base',
+    numeric: true
+  })
+  return [...props.users].sort((a, b) => collator.compare(a.name, b.name))
+})
+
 watch(
   () => props.users,
   (next) => {
@@ -39,7 +47,7 @@ watch(
     <label class="viewing-label">
       <span class="viewing-text">{{ t('app.viewingAs') }}</span>
       <select v-model="selectedUser" class="viewing-select">
-        <option v-for="user in users" :key="user.id" :value="user.id">
+        <option v-for="user in sortedUsers" :key="user.id" :value="user.id">
           {{ user.name }} · @{{ user.handle }}
         </option>
       </select>
