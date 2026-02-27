@@ -4,6 +4,7 @@
       "id": "u1",
       "name": "Mara Ortiz",
       "handle": "marao",
+      "pronouns": "she/her",
       "bio": "Design systems lead who collects sounds from subway platforms.",
       "location": "Chicago, IL",
       "avatar": "https://api.dicebear.com/7.x/shapes/svg?seed=signal-u1"
@@ -12,6 +13,7 @@
       "id": "u2",
       "name": "Ravi Sen",
       "handle": "ravisen",
+      "pronouns": "he/him",
       "bio": "Writes tiny poems about logistics and late-night diners.",
       "location": "Queens, NY",
       "avatar": "https://api.dicebear.com/7.x/shapes/svg?seed=signal-u2"
@@ -20,6 +22,7 @@
       "id": "u3",
       "name": "Lina Park",
       "handle": "linap",
+      "pronouns": "they/them",
       "bio": "Community gardener mapping bee corridors across the city.",
       "location": "Portland, OR",
       "avatar": "https://api.dicebear.com/7.x/shapes/svg?seed=signal-u3"
@@ -28,6 +31,7 @@
       "id": "u4",
       "name": "Diego Costa",
       "handle": "diegoc",
+      "pronouns": "he/him",
       "bio": "Night shift barista and morning drone photographer.",
       "location": "Austin, TX",
       "avatar": "https://api.dicebear.com/7.x/shapes/svg?seed=signal-u4"

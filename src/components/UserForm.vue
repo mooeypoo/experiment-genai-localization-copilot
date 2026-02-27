@@ -5,13 +5,14 @@ import { validateUser } from '../data/store'
 const emit = defineEmits(['submit', 'error'])
 
 const name = ref('')
+const pronouns = ref('they/them')
 const bio = ref('')
 const errorMessage = ref('')
 
 const handleSubmit = () => {
   errorMessage.value = ''
   
-  const error = validateUser(name.value, bio.value)
+  const error = validateUser(name.value, bio.value, pronouns.value)
   if (error) {
     errorMessage.value = error
     emit('error', error)
@@ -20,9 +21,11 @@ const handleSubmit = () => {
   
   emit('submit', {
     name: name.value.trim(),
+    pronouns: pronouns.value,
     bio: bio.value.trim()
   })
   name.value = ''
+  pronouns.value = 'they/them'
   bio.value = ''
 }
 </script>
@@ -37,6 +40,15 @@ const handleSubmit = () => {
       <label class="form-field">
         <span>Display name</span>
         <input v-model="name" type="text" placeholder="Full name" required />
+      </label>
+      <label class="form-field">
+        <span>Pronouns</span>
+        <select v-model="pronouns" required>
+          <option value="she/her">she/her</option>
+          <option value="he/him">he/him</option>
+          <option value="they/them">they/them</option>
+          <option value="any">any pronouns</option>
+        </select>
       </label>
       <label class="form-field">
         <span>Bio (optional)</span>

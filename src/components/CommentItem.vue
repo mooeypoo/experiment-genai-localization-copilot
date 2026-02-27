@@ -25,7 +25,10 @@ const formatDate = (value) => {
     <div class="comment-header">
       <div>
         <p class="comment-author">
-          <span v-if="author">{{ author.name }} · @{{ author.handle }}</span>
+          <span v-if="author">
+            {{ author.name }} · @{{ author.handle }}
+            <span v-if="author.pronouns" class="comment-pronouns">({{ author.pronouns }})</span>
+          </span>
           <span v-else>Unknown author</span>
         </p>
         <p class="comment-date">{{ formatDate(comment.createdAt) }}</p>

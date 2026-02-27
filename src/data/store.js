@@ -63,7 +63,7 @@ const generateHandle = (name) => {
   return handle || `user${counters.user + 1}`
 }
 
-export const validateUser = (name, bio) => {
+export const validateUser = (name, bio, pronouns) => {
   if (!name || typeof name !== 'string') {
     return 'Display name is required.'
   }
@@ -77,11 +77,17 @@ export const validateUser = (name, bio) => {
   if (bio && typeof bio === 'string' && bio.trim().length > 500) {
     return 'Bio cannot exceed 500 characters.'
   }
+  if (pronouns && typeof pronouns === 'string') {
+    const validPronouns = ['she/her', 'he/him', 'they/them', 'any']
+    if (!validPronouns.includes(pronouns)) {
+      return 'Invalid pronouns selection.'
+    }
+  }
   return null
 }
 
-export const createUser = ({ name, bio }) => {
-  const validationError = validateUser(name, bio)
+export const createUser = ({ name, bio, pronouns }) => {
+  const validationError = validateUser(name, bio, pronouns)
   if (validationError) {
     throw new Error(validationError)
   }
@@ -93,6 +99,7 @@ export const createUser = ({ name, bio }) => {
     id,
     name: name.trim(),
     handle,
+    pronouns: pronouns || 'they/them',
     bio: bio ? bio.trim() : '',
     location: '',
     avatar: `https://api.dicebear.com/7.x/shapes/svg?seed=signal-${id}`
