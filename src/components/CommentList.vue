@@ -1,6 +1,9 @@
 <script setup>
 import { computed } from 'vue'
+import { useI18n } from 'vue-i18n'
 import CommentItem from './CommentItem.vue'
+
+const { t } = useI18n()
 
 const props = defineProps({
   comments: {
@@ -25,8 +28,8 @@ const resolveAuthor = (comment) => userMap.value.get(comment.authorId) || null
 <template>
   <section class="stack">
     <header class="section-header">
-      <h2>Conversation</h2>
-      <p>{{ comments.length }} comments</p>
+      <h2>{{ t('post.conversation') }}</h2>
+      <p>{{ t('post.commentsCount', props.comments.length) }}</p>
     </header>
     <div v-if="comments.length" class="stack">
       <CommentItem
@@ -36,6 +39,6 @@ const resolveAuthor = (comment) => userMap.value.get(comment.authorId) || null
         :author="resolveAuthor(comment)"
       />
     </div>
-    <p v-else class="empty-state">No comments yet. Be the first to add one.</p>
+    <p v-else class="empty-state">{{ t('post.noComments') }}</p>
   </section>
 </template>

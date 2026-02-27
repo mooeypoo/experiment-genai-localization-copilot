@@ -1,0 +1,72 @@
+{
+  "app": {
+    "brand": {
+      "kicker": "Signal",
+      "title": "Pulseboard",
+      "subtitle": "Une petite démo sociale conçue pour des expérimentations rapides."
+    },
+    "nav": {
+      "post": "Publication",
+      "users": "Utilisateurs"
+    },
+    "viewingAs": "Voir en tant que",
+    "language": "Langue"
+  },
+  "post": {
+    "title": "Une ville de petits signaux",
+    "conversation": "Conversation",
+    "commentsCount": "{count} commentaires | {count} commentaire | {count} commentaires",
+    "noComments": "Aucun commentaire pour l'instant. Soyez le premier à en ajouter un."
+  },
+  "comment": {
+    "addTitle": "Ajouter un commentaire",
+    "addSubtitle": "Écrire en tant qu'utilisateur sélectionné.",
+    "messageLabel": "Message",
+    "messagePlaceholder": "Partagez une pensée...",
+    "submitButton": "Publier le commentaire",
+    "unknownAuthor": "Auteur inconnu"
+  },
+  "user": {
+    "createTitle": "Créer un utilisateur",
+    "createSubtitle": "Ajoutez une nouvelle voix au fil de démo.",
+    "nameLabel": "Nom d'affichage",
+    "namePlaceholder": "Nom complet",
+    "pronounsLabel": "Pronoms",
+    "pronounsOptions": {
+      "sheHer": "elle",
+      "heHim": "il",
+      "theyThem": "iel",
+      "any": "tous pronoms"
+    },
+    "bioLabel": "Biographie (facultatif)",
+    "bioPlaceholder": "Courte biographie",
+    "submitButton": "Créer l'utilisateur",
+    "communityTitle": "Communauté",
+    "communityCount": "{count} personnes dans la salle | {count} personne dans la salle | {count} personnes dans la salle"
+  },
+  "profile": {
+    "viewActivity": {
+      "her": "Voir son activité et ses contributions.",
+      "his": "Voir son activité et ses contributions.",
+      "their": "Voir leur activité et leurs contributions."
+    },
+    "notFound": "Nous n'avons pas pu trouver ce profil."
+  },
+  "validation": {
+    "displayNameRequired": "Le nom d'affichage est requis.",
+    "displayNameEmpty": "Le nom d'affichage ne peut pas être vide.",
+    "displayNameTooLong": "Le nom d'affichage ne peut pas dépasser 100 caractères.",
+    "bioTooLong": "La biographie ne peut pas dépasser 160 caractères.",
+    "invalidPronouns": "Sélection de pronoms invalide.",
+    "commentBodyRequired": "Le corps du commentaire est requis.",
+    "commentEmpty": "Le commentaire ne peut pas être vide.",
+    "commentTooLong": "Le commentaire ne peut pas dépasser 500 caractères.",
+    "authorRequired": "L'ID de l'auteur est requis.",
+    "invalidAuthor": "ID d'auteur invalide."
+  },
+  "charCounter": {
+    "format": "{current} / {max}",
+    "over": "({count} en trop)",
+    "remaining": "({count} restants)"
+  }
+}

@@ -1,4 +1,8 @@
 <script setup>
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
+
 const props = defineProps({
   user: {
     type: Object,
@@ -29,7 +33,7 @@ const getPronounReference = (pronouns) => {
     </div>
     <p class="profile-bio">{{ user.bio }}</p>
     <p v-if="user.pronouns" class="profile-reference">
-      View {{ getPronounReference(user.pronouns) }} activity and contributions.
+      {{ t(`profile.viewActivity.${getPronounReference(user.pronouns)}`) }}
     </p>
   </article>
 </template>

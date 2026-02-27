@@ -1,4 +1,8 @@
 <script setup>
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
+
 const props = defineProps({
   comment: {
     type: Object,
@@ -29,7 +33,7 @@ const formatDate = (value) => {
             {{ author.name }} · @{{ author.handle }}
             <span v-if="author.pronouns" class="comment-pronouns">({{ author.pronouns }})</span>
           </span>
-          <span v-else>Unknown author</span>
+          <span v-else>{{ t('comment.unknownAuthor') }}</span>
         </p>
         <p class="comment-date">{{ formatDate(comment.createdAt) }}</p>
       </div>

@@ -1,6 +1,9 @@
 <script setup>
 import { RouterLink } from 'vue-router'
+import { useI18n } from 'vue-i18n'
 import UserCard from './UserCard.vue'
+
+const { t } = useI18n()
 
 const props = defineProps({
   users: {
@@ -13,8 +16,8 @@ const props = defineProps({
 <template>
   <section class="stack">
     <header class="section-header">
-      <h2>Community</h2>
-      <p>{{ users.length }} people in the room</p>
+      <h2>{{ t('user.communityTitle') }}</h2>
+      <p>{{ t('user.communityCount', props.users.length) }}</p>
     </header>
     <div class="grid">
       <RouterLink

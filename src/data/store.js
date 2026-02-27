@@ -65,22 +65,22 @@ const generateHandle = (name) => {
 
 export const validateUser = (name, bio, pronouns) => {
   if (!name || typeof name !== 'string') {
-    return 'Display name is required.'
+    return 'validation.displayNameRequired'
   }
   const trimmedName = name.trim()
   if (trimmedName.length === 0) {
-    return 'Display name cannot be empty.'
+    return 'validation.displayNameEmpty'
   }
   if (trimmedName.length > 100) {
-    return 'Display name cannot exceed 100 characters.'
+    return 'validation.displayNameTooLong'
   }
   if (bio && typeof bio === 'string' && bio.length > 160) {
-    return 'Bio cannot exceed 160 characters.'
+    return 'validation.bioTooLong'
   }
   if (pronouns && typeof pronouns === 'string') {
     const validPronouns = ['she/her', 'he/him', 'they/them', 'any']
     if (!validPronouns.includes(pronouns)) {
-      return 'Invalid pronouns selection.'
+      return 'validation.invalidPronouns'
     }
   }
   return null
@@ -110,21 +110,21 @@ export const createUser = ({ name, bio, pronouns }) => {
 
 export const validateComment = (body, authorId) => {
   if (!body || typeof body !== 'string') {
-    return 'Comment body is required.'
+    return 'validation.commentBodyRequired'
   }
   const trimmed = body.trim()
   if (trimmed.length === 0) {
-    return 'Comment cannot be empty.'
+    return 'validation.commentEmpty'
   }
   if (trimmed.length > 500) {
-    return 'Comment cannot exceed 500 characters.'
+    return 'validation.commentTooLong'
   }
   if (!authorId) {
-    return 'Author ID is required.'
+    return 'validation.authorRequired'
   }
   const author = state.users.find((user) => user.id === authorId)
   if (!author) {
-    return 'Invalid author ID.'
+    return 'validation.invalidAuthor'
   }
   return null
 }

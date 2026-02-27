@@ -181,6 +181,34 @@ a {
   object-fit: cover;
 }
 
+.language-selector {
+  display: flex;
+  align-items: center;
+}
+
+.language-label {
+  display: flex;
+  align-items: center;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.language-select {
+  border: none;
+  background: transparent;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ink);
+  cursor: pointer;
+  padding: 0;
+}
+
+.language-select:focus {
+  outline: none;
+}
+
+
 .view {
   display: flex;
   flex-direction: column;
@@ -520,6 +548,7 @@ a {
     gap: 12px;
   }
 
+  .language-selector,
   .viewing-selector {
     width: 100%;
     justify-content: space-between;

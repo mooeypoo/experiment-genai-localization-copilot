@@ -1,0 +1,72 @@
+{
+  "app": {
+    "brand": {
+      "kicker": "Signal",
+      "title": "Pulseboard",
+      "subtitle": "Una pequeña demostración social construida para experimentos rápidos."
+    },
+    "nav": {
+      "post": "Publicación",
+      "users": "Usuarios"
+    },
+    "viewingAs": "Viendo como",
+    "language": "Idioma"
+  },
+  "post": {
+    "title": "Una ciudad de pequeñas señales",
+    "conversation": "Conversación",
+    "commentsCount": "{count} comentarios | {count} comentario | {count} comentarios",
+    "noComments": "Aún no hay comentarios. Sé el primero en agregar uno."
+  },
+  "comment": {
+    "addTitle": "Agregar un comentario",
+    "addSubtitle": "Escribir como el usuario seleccionado.",
+    "messageLabel": "Mensaje",
+    "messagePlaceholder": "Comparte un pensamiento...",
+    "submitButton": "Publicar comentario",
+    "unknownAuthor": "Autor desconocido"
+  },
+  "user": {
+    "createTitle": "Crear un usuario",
+    "createSubtitle": "Agrega una nueva voz al feed de demostración.",
+    "nameLabel": "Nombre para mostrar",
+    "namePlaceholder": "Nombre completo",
+    "pronounsLabel": "Pronombres",
+    "pronounsOptions": {
+      "sheHer": "ella",
+      "heHim": "él",
+      "theyThem": "elle",
+      "any": "cualquier pronombre"
+    },
+    "bioLabel": "Biografía (opcional)",
+    "bioPlaceholder": "Biografía corta",
+    "submitButton": "Crear usuario",
+    "communityTitle": "Comunidad",
+    "communityCount": "{count} personas en la sala | {count} persona en la sala | {count} personas en la sala"
+  },
+  "profile": {
+    "viewActivity": {
+      "her": "Ver su actividad y contribuciones.",
+      "his": "Ver su actividad y contribuciones.",
+      "their": "Ver su actividad y contribuciones."
+    },
+    "notFound": "No pudimos encontrar ese perfil."
+  },
+  "validation": {
+    "displayNameRequired": "El nombre para mostrar es obligatorio.",
+    "displayNameEmpty": "El nombre para mostrar no puede estar vacío.",
+    "displayNameTooLong": "El nombre para mostrar no puede exceder los 100 caracteres.",
+    "bioTooLong": "La biografía no puede exceder los 160 caracteres.",
+    "invalidPronouns": "Selección de pronombres inválida.",
+    "commentBodyRequired": "El cuerpo del comentario es obligatorio.",
+    "commentEmpty": "El comentario no puede estar vacío.",
+    "commentTooLong": "El comentario no puede exceder los 500 caracteres.",
+    "authorRequired": "El ID del autor es obligatorio.",
+    "invalidAuthor": "ID de autor inválido."
+  },
+  "charCounter": {
+    "format": "{current} / {max}",
+    "over": "({count} de más)",
+    "remaining": "({count} restantes)"
+  }
+}

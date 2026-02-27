@@ -1,6 +1,9 @@
 <script setup>
 import { computed, watch } from 'vue'
+import { useI18n } from 'vue-i18n'
 import { useViewingUser } from '../composables/useViewingUser'
+
+const { t } = useI18n()
 
 const props = defineProps({
   users: {
@@ -34,7 +37,7 @@ watch(
 <template>
   <div class="viewing-selector">
     <label class="viewing-label">
-      <span class="viewing-text">Viewing as</span>
+      <span class="viewing-text">{{ t('app.viewingAs') }}</span>
       <select v-model="selectedUser" class="viewing-select">
         <option v-for="user in users" :key="user.id" :value="user.id">
           {{ user.name }} · @{{ user.handle }}

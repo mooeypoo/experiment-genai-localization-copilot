@@ -1,7 +1,9 @@
 <script setup>
 import { ref, computed } from 'vue'
+import { useI18n } from 'vue-i18n'
 import { validateUser } from '../data/store'
 
+const { t } = useI18n()
 const emit = defineEmits(['submit', 'error'])
 
 const BIO_MAX_LENGTH = 160
@@ -24,7 +26,7 @@ const handleSubmit = () => {
   
   const error = validateUser(name.value, bio.value, pronouns.value)
   if (error) {
-    errorMessage.value = error
+    errorMessage.value = t(error)
     emit('error', error)
     return
   }
@@ -43,39 +45,39 @@ const handleSubmit = () => {
 <template>
   <section class="card form-card">
     <header class="section-header">
-      <h2>Create a user</h2>
-      <p>Add a new voice to the demo feed.</p>
+      <h2>{{ t('user.createTitle') }}</h2>
+      <p>{{ t('user.createSubtitle') }}</p>
     </header>
     <form class="form" @submit.prevent="handleSubmit">
       <label class="form-field">
-        <span>Display name</span>
-        <input v-model="name" type="text" placeholder="Full name" required />
+        <span>{{ t('user.nameLabel') }}</span>
+        <input v-model="name" type="text" :placeholder="t('user.namePlaceholder')" required />
       </label>
       <label class="form-field">
-        <span>Pronouns</span>
+        <span>{{ t('user.pronounsLabel') }}</span>
         <select v-model="pronouns" required>
-          <option value="she/her">she/her</option>
-          <option value="he/him">he/him</option>
-          <option value="they/them">they/them</option>
-          <option value="any">any pronouns</option>
+          <option value="she/her">{{ t('user.pronounsOptions.sheHer') }}</option>
+          <option value="he/him">{{ t('user.pronounsOptions.heHim') }}</option>
+          <option value="they/them">{{ t('user.pronounsOptions.theyThem') }}</option>
+          <option value="any">{{ t('user.pronounsOptions.any') }}</option>
         </select>
       </label>
       <label class="form-field">
-        <span>Bio (optional)</span>
+        <span>{{ t('user.bioLabel') }}</span>
         <textarea 
           v-model="bio" 
           rows="3" 
-          placeholder="Short bio"
+          :placeholder="t('user.bioPlaceholder')"
           :maxlength="BIO_MAX_LENGTH"
         ></textarea>
         <span class="char-counter" :class="bioCounterClass">
-          {{ bioLength }} / {{ BIO_MAX_LENGTH }}
-          <span v-if="bioRemaining < 0" class="char-counter-hint"> ({{ Math.abs(bioRemaining) }} over)</span>
-          <span v-else-if="bioRemaining <= 20" class="char-counter-hint"> ({{ bioRemaining }} remaining)</span>
+          {{ t('charCounter.format', { current: bioLength, max: BIO_MAX_LENGTH }) }}
+          <span v-if="bioRemaining < 0" class="char-counter-hint"> {{ t('charCounter.over', { count: Math.abs(bioRemaining) }) }}</span>
+          <span v-else-if="bioRemaining <= 20" class="char-counter-hint"> {{ t('charCounter.remaining', { count: bioRemaining }) }}</span>
         </span>
       </label>
       <p v-if="errorMessage" class="error-message">{{ errorMessage }}</p>
-      <button type="submit" class="btn">Create user</button>
+      <button type="submit" class="btn">{{ t('user.submitButton') }}</button>
     </form>
   </section>
 </template>

@@ -1,6 +1,10 @@
 <script setup>
+import { useI18n } from 'vue-i18n'
 import NavigationBar from './NavigationBar.vue'
 import ViewingAsSelector from './ViewingAsSelector.vue'
+import LanguageSwitcher from './LanguageSwitcher.vue'
+
+const { t } = useI18n()
 
 const props = defineProps({
   users: {
@@ -13,11 +17,12 @@ const props = defineProps({
 <template>
   <header class="app-header">
     <div class="nav-brand">
-      <p class="nav-kicker">Signal</p>
-      <h1 class="nav-title">Pulseboard</h1>
-      <p class="nav-subtitle">A tiny social demo built for fast experiments.</p>
+      <p class="nav-kicker">{{ t('app.brand.kicker') }}</p>
+      <h1 class="nav-title">{{ t('app.brand.title') }}</h1>
+      <p class="nav-subtitle">{{ t('app.brand.subtitle') }}</p>
     </div>
     <div class="header-actions">
+      <LanguageSwitcher />
       <ViewingAsSelector v-if="users.length" :users="users" />
       <NavigationBar />
     </div>

@@ -1,0 +1,72 @@
+{
+  "app": {
+    "brand": {
+      "kicker": "Signal",
+      "title": "Pulseboard",
+      "subtitle": "A tiny social demo built for fast experiments."
+    },
+    "nav": {
+      "post": "Post",
+      "users": "Users"
+    },
+    "viewingAs": "Viewing as",
+    "language": "Language"
+  },
+  "post": {
+    "title": "A city of small signals",
+    "conversation": "Conversation",
+    "commentsCount": "{count} comments | {count} comment | {count} comments",
+    "noComments": "No comments yet. Be the first to add one."
+  },
+  "comment": {
+    "addTitle": "Add a comment",
+    "addSubtitle": "Write as the selected viewing user.",
+    "messageLabel": "Message",
+    "messagePlaceholder": "Share a thought...",
+    "submitButton": "Post comment",
+    "unknownAuthor": "Unknown author"
+  },
+  "user": {
+    "createTitle": "Create a user",
+    "createSubtitle": "Add a new voice to the demo feed.",
+    "nameLabel": "Display name",
+    "namePlaceholder": "Full name",
+    "pronounsLabel": "Pronouns",
+    "pronounsOptions": {
+      "sheHer": "she/her",
+      "heHim": "he/him",
+      "theyThem": "they/them",
+      "any": "any pronouns"
+    },
+    "bioLabel": "Bio (optional)",
+    "bioPlaceholder": "Short bio",
+    "submitButton": "Create user",
+    "communityTitle": "Community",
+    "communityCount": "{count} people in the room | {count} person in the room | {count} people in the room"
+  },
+  "profile": {
+    "viewActivity": {
+      "her": "View her activity and contributions.",
+      "his": "View his activity and contributions.",
+      "their": "View their activity and contributions."
+    },
+    "notFound": "We could not find that profile."
+  },
+  "validation": {
+    "displayNameRequired": "Display name is required.",
+    "displayNameEmpty": "Display name cannot be empty.",
+    "displayNameTooLong": "Display name cannot exceed 100 characters.",
+    "bioTooLong": "Bio cannot exceed 160 characters.",
+    "invalidPronouns": "Invalid pronouns selection.",
+    "commentBodyRequired": "Comment body is required.",
+    "commentEmpty": "Comment cannot be empty.",
+    "commentTooLong": "Comment cannot exceed 500 characters.",
+    "authorRequired": "Author ID is required.",
+    "invalidAuthor": "Invalid author ID."
+  },
+  "charCounter": {
+    "format": "{current} / {max}",
+    "over": "({count} over)",
+    "remaining": "({count} remaining)"
+  }
+}
