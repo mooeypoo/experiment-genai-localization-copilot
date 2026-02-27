@@ -74,8 +74,8 @@ export const validateUser = (name, bio, pronouns) => {
   if (trimmedName.length > 100) {
     return 'Display name cannot exceed 100 characters.'
   }
-  if (bio && typeof bio === 'string' && bio.trim().length > 500) {
-    return 'Bio cannot exceed 500 characters.'
+  if (bio && typeof bio === 'string' && bio.length > 160) {
+    return 'Bio cannot exceed 160 characters.'
   }
   if (pronouns && typeof pronouns === 'string') {
     const validPronouns = ['she/her', 'he/him', 'they/them', 'any']
