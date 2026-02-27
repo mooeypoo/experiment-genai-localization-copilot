@@ -234,11 +234,22 @@
 
   <script>
     (async function() {
-      const REPO_NAME = 'experiment-genai-steps-copilot';
       const stepsList = document.getElementById('steps-list');
 
+      function getBasePrefix() {
+        const path = window.location.pathname;
+        if (path === '/') return '';
+        return path.replace(/\/index\.html$/, '').replace(/\/$/, '');
+      }
+
+      function joinBase(pathname) {
+        const base = getBasePrefix();
+        if (!base) return pathname.startsWith('/') ? pathname : `/${pathname}`;
+        return `${base}${pathname.startsWith('/') ? '' : '/'}${pathname}`;
+      }
+
       try {
-        const response = await fetch(`/${REPO_NAME}/steps.json`);
+        const response = await fetch(joinBase('steps.json'));
         if (!response.ok) throw new Error('Failed to load steps');
         
         const steps = await response.json();
@@ -249,7 +260,7 @@
         }
 
         stepsList.innerHTML = steps.map(step => `
-          <a href="${step.path}" class="step-card">
+          <a href="${joinBase(step.path)}" class="step-card">
             <div class="step-tag">${step.tag}</div>
             <div class="step-description">${step.description}</div>
           </a>

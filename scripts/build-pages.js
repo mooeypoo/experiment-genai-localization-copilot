@@ -206,8 +206,8 @@ async function buildPages() {
         let indexHtml = fs.readFileSync(indexPath, 'utf8');
         
         // Inject shell CSS and JS before </head> and </body>
-        const shellCssTag = `<link rel="stylesheet" href="/${REPO_NAME}/shell/shell.css">`;
-        const shellJsTag = `<script src="/${REPO_NAME}/shell/shell.js"></script>`;
+        const shellCssTag = `<link rel="stylesheet" href="../shell/shell.css">`;
+        const shellJsTag = `<script src="../shell/shell.js"></script>`;
         
         indexHtml = indexHtml.replace('</head>', `  ${shellCssTag}\n  </head>`);
         indexHtml = indexHtml.replace('</body>', `  ${shellJsTag}\n</body>`);
@@ -255,9 +255,9 @@ async function buildPages() {
         tag,
         stepNumber: stepNum,
         description: stepDescription,
-        path: `/${REPO_NAME}/${tag}/`,
-        notesPath: `/${REPO_NAME}/${tag}/notes.html`,
-        promptPath: `/${REPO_NAME}/${tag}/prompt.html`
+        path: `${tag}/`,
+        notesPath: `${tag}/notes.html`,
+        promptPath: `${tag}/prompt.html`
       });
     }
 

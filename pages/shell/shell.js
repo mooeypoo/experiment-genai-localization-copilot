@@ -10,17 +10,32 @@
 (function() {
   'use strict';
 
-  const REPO_NAME = 'experiment-genai-steps-copilot';
-  const STEPS_JSON_URL = `/${REPO_NAME}/steps.json`;
+  const STEPS_JSON_URL = () => `${getBasePrefix()}/steps.json`;
   
   let stepsData = [];
   let currentStep = null;
   let sidebarOpen = window.innerWidth >= 768;
 
+  function getBasePrefix() {
+    const path = window.location.pathname.replace(/\/index\.html$/, '');
+    const stepMatch = path.match(/^(.*)\/step-\d+(?:\/|$)/);
+    if (stepMatch) return stepMatch[1] || '';
+    const aboutMatch = path.match(/^(.*)\/about\/?$/);
+    if (aboutMatch) return aboutMatch[1] || '';
+    if (path === '/') return '';
+    return path.replace(/\/$/, '');
+  }
+
+  function joinBase(pathname) {
+    const base = getBasePrefix();
+    if (!base) return pathname.startsWith('/') ? pathname : `/${pathname}`;
+    return `${base}${pathname.startsWith('/') ? '' : '/'}${pathname}`;
+  }
+
   // Initialize shell
   async function init() {
     // Detect current step from URL
-    const pathMatch = window.location.pathname.match(/\/(step-\d+)\//);
+    const pathMatch = window.location.pathname.match(/\/(step-\d+)(?:\/|\/index\.html)/);
     if (!pathMatch) {
       console.log('[shell] Not on a step page, skipping shell initialization');
       return;
@@ -31,7 +46,7 @@
 
     try {
       // Load steps metadata
-      const response = await fetch(STEPS_JSON_URL);
+      const response = await fetch(STEPS_JSON_URL());
       if (!response.ok) throw new Error('Failed to load steps.json');
       stepsData = await response.json();
       console.log('[shell] Loaded steps data:', stepsData);
@@ -69,8 +84,8 @@
           </select>
         </div>
         <div class="shell-topbar-right">
-          <a href="/${REPO_NAME}/" class="shell-nav-link">Home</a>
-          <a href="/${REPO_NAME}/about/" class="shell-nav-link">About</a>
+          <a href="${joinBase('/') }" class="shell-nav-link">Home</a>
+          <a href="${joinBase('about/') }" class="shell-nav-link">About</a>
           <button class="shell-copy-link" id="shell-copy-link" aria-label="Copy link to this step">
             <span class="copy-icon">🔗</span>
             <span class="copy-text">Link</span>
@@ -133,7 +148,7 @@
 
     // Load agent notes
     const notesContainer = document.getElementById('shell-notes-content');
-    fetch(currentStepData.notesPath)
+    fetch(joinBase(currentStepData.notesPath))
       .then(response => response.text())
       .then(html => {
         const iframe = document.createElement('iframe');
@@ -161,7 +176,7 @@
 
     // Load prompt
     const promptContainer = document.getElementById('shell-prompt-content');
-    fetch(currentStepData.promptPath)
+    fetch(joinBase(currentStepData.promptPath))
       .then(response => response.text())
       .then(html => {
         const iframe = document.createElement('iframe');
@@ -194,7 +209,7 @@
       const selectedStep = e.target.value;
       const stepData = stepsData.find(s => s.tag === selectedStep);
       if (stepData) {
-        window.location.href = stepData.path;
+        window.location.href = joinBase(stepData.path);
       }
     });
 
