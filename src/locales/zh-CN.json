@@ -1,0 +1,72 @@
+{
+  "app": {
+    "brand": {
+      "kicker": "信号",
+      "title": "Pulseboard",
+      "subtitle": "一个为快速实验而构建的小型社交演示应用。"
+    },
+    "nav": {
+      "post": "帖子",
+      "users": "用户"
+    },
+    "viewingAs": "查看身份",
+    "language": "语言"
+  },
+  "post": {
+    "title": "小信号之城",
+    "conversation": "对话",
+    "commentsCount": "{count} 条评论 | {count} 条评论 | {count} 条评论",
+    "noComments": "还没有评论。来做第一个评论的人吧。"
+  },
+  "comment": {
+    "addTitle": "添加评论",
+    "addSubtitle": "以所选查看用户的身份撰写。",
+    "messageLabel": "消息",
+    "messagePlaceholder": "分享一个想法...",
+    "submitButton": "发布评论",
+    "unknownAuthor": "未知作者"
+  },
+  "user": {
+    "createTitle": "创建用户",
+    "createSubtitle": "为演示动态添加新的声音。",
+    "nameLabel": "显示名称",
+    "namePlaceholder": "全名",
+    "pronounsLabel": "人称代词",
+    "pronounsOptions": {
+      "sheHer": "她",
+      "heHim": "他",
+      "theyThem": "TA",
+      "any": "任何代词"
+    },
+    "bioLabel": "简介（可选）",
+    "bioPlaceholder": "简短简介",
+    "submitButton": "创建用户",
+    "communityTitle": "社区",
+    "communityCount": "房间里有 {count} 人 | 房间里有 {count} 人 | 房间里有 {count} 人"
+  },
+  "profile": {
+    "viewActivity": {
+      "her": "查看她的活动和贡献。",
+      "his": "查看他的活动和贡献。",
+      "their": "查看TA的活动和贡献。"
+    },
+    "notFound": "我们找不到该个人资料。"
+  },
+  "validation": {
+    "displayNameRequired": "显示名称为必填项。",
+    "displayNameEmpty": "显示名称不能为空。",
+    "displayNameTooLong": "显示名称不能超过100个字符。",
+    "bioTooLong": "简介不能超过160个字符。",
+    "invalidPronouns": "人称代词选择无效。",
+    "commentBodyRequired": "评论内容为必填项。",
+    "commentEmpty": "评论不能为空。",
+    "commentTooLong": "评论不能超过500个字符。",
+    "authorRequired": "作者ID为必填项。",
+    "invalidAuthor": "作者ID无效。"
+  },
+  "charCounter": {
+    "format": "{current} / {max}",
+    "over": "（超出 {count} 个字符）",
+    "remaining": "（剩余 {count} 个字符）"
+  }
+}

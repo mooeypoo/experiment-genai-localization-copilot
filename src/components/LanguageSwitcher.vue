@@ -10,7 +10,8 @@ const languages = [
   { code: 'es', name: 'Español' },
   { code: 'he', name: 'עברית' },
   { code: 'ar', name: 'العربية' },
-  { code: 'fa', name: 'فارسی' }
+  { code: 'fa', name: 'فارسی' },
+  { code: 'zh-CN', name: '简体中文' }
 ]
 
 const handleChange = (event) => {

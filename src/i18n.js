@@ -5,6 +5,7 @@ import es from './locales/es.json'
 import he from './locales/he.json'
 import ar from './locales/ar.json'
 import fa from './locales/fa.json'
+import zhCN from './locales/zh-CN.json'
 
 const messages = {
   en,
@@ -12,7 +13,8 @@ const messages = {
   es,
   he,
   ar,
-  fa
+  fa,
+  'zh-CN': zhCN
 }
 
 const savedLocale = localStorage.getItem('locale') || 'en'
