@@ -86,6 +86,9 @@
             ${generateStepOptions()}
           </select>
         </div>
+        <div class="shell-topbar-center">
+          <div class="shell-experiment-name">GenAI Incremental Localization Experiment</div>
+        </div>
         <div class="shell-topbar-right">
           <a href="${joinBase('/') }" class="shell-nav-link">Home</a>
           <a href="${joinBase('about/') }" class="shell-nav-link">About</a>
@@ -121,7 +124,7 @@
       </div>
       
       <footer class="shell-footer">
-        <p>Made by <a href="https://moriel.tech" target="_blank" rel="noopener">Moriel Schottlender</a></p>
+        <p>Made by <a href="https://moriel.tech" target="_blank" rel="noopener">Moriel Schottlender</a> | <a href="https://github.com/mooeypoo/experiment-genai-localization-copilot" target="_blank" rel="noopener">View on GitHub</a></p>
       </footer>
     `;
 

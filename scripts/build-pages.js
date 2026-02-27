@@ -133,6 +133,18 @@ async function buildPages() {
   }
   fs.mkdirSync(DIST_DIR, { recursive: true });
 
+  // Read template files BEFORE stashing (to pick up any modified versions)
+  const pagesDir = path.join(ROOT, 'pages');
+  const indexTemplate = fs.readFileSync(path.join(pagesDir, 'index.html'), 'utf8');
+  const aboutTemplate = fs.readFileSync(path.join(pagesDir, 'about.html'), 'utf8');
+
+  // Copy shell assets before stashing (to pick up any modified versions)
+  const shellDir = path.join(DIST_DIR, 'shell');
+  fs.mkdirSync(shellDir, { recursive: true });
+  if (fs.existsSync(path.join(pagesDir, 'shell'))) {
+    fs.cpSync(path.join(pagesDir, 'shell'), shellDir, { recursive: true });
+  }
+
   // Get current branch to restore later
   const currentBranch = exec('git rev-parse --abbrev-ref HEAD', { quiet: true }).trim();
   const hasUncommittedChanges = exec('git status --porcelain', { quiet: true }).trim();
@@ -288,26 +300,14 @@ async function buildPages() {
       JSON.stringify(stepsMetadata, null, 2)
     );
 
-    // Copy global shell assets
-    log('Copying global shell assets...');
-    const shellDir = path.join(DIST_DIR, 'shell');
-    fs.mkdirSync(shellDir, { recursive: true });
-    
-    const pagesDir = path.join(ROOT, 'pages');
-    if (fs.existsSync(path.join(pagesDir, 'shell'))) {
-      fs.cpSync(path.join(pagesDir, 'shell'), shellDir, { recursive: true });
-    }
-
-    // Generate landing page
+    // Generate landing page (using pre-read template to capture any modifications)
     log('Generating landing page...');
-    const indexTemplate = fs.readFileSync(path.join(pagesDir, 'index.html'), 'utf8');
     fs.writeFileSync(path.join(DIST_DIR, 'index.html'), indexTemplate);
 
-    // Generate about page
+    // Generate about page (using pre-read template to capture any modifications)
     log('Generating about page...');
     const aboutDir = path.join(DIST_DIR, 'about');
     fs.mkdirSync(aboutDir, { recursive: true });
-    const aboutTemplate = fs.readFileSync(path.join(pagesDir, 'about.html'), 'utf8');
     fs.writeFileSync(path.join(aboutDir, 'index.html'), aboutTemplate);
 
     // Create .nojekyll to prevent Jekyll processing
