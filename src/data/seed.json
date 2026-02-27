@@ -1,0 +1,67 @@
+{
+  "users": [
+    {
+      "id": "u1",
+      "name": "Mara Ortiz",
+      "handle": "marao",
+      "bio": "Design systems lead who collects sounds from subway platforms.",
+      "location": "Chicago, IL",
+      "avatar": "https://api.dicebear.com/7.x/shapes/svg?seed=signal-u1"
+    },
+    {
+      "id": "u2",
+      "name": "Ravi Sen",
+      "handle": "ravisen",
+      "bio": "Writes tiny poems about logistics and late-night diners.",
+      "location": "Queens, NY",
+      "avatar": "https://api.dicebear.com/7.x/shapes/svg?seed=signal-u2"
+    },
+    {
+      "id": "u3",
+      "name": "Lina Park",
+      "handle": "linap",
+      "bio": "Community gardener mapping bee corridors across the city.",
+      "location": "Portland, OR",
+      "avatar": "https://api.dicebear.com/7.x/shapes/svg?seed=signal-u3"
+    },
+    {
+      "id": "u4",
+      "name": "Diego Costa",
+      "handle": "diegoc",
+      "bio": "Night shift barista and morning drone photographer.",
+      "location": "Austin, TX",
+      "avatar": "https://api.dicebear.com/7.x/shapes/svg?seed=signal-u4"
+    }
+  ],
+  "post": {
+    "id": "p1",
+    "authorId": "u1",
+    "title": "A city of small signals",
+    "body": "Today I tracked the micro-moments that make a place feel alive: the orange cones, the bus sigh, the tiny nod from someone sharing the crosswalk. If we stitched those signals together, what story would our neighborhoods tell?",
+    "createdAt": "2026-02-25T14:30:00Z",
+    "tags": ["neighborhoods", "rituals", "field-notes"]
+  },
+  "comments": [
+    {
+      "id": "c1",
+      "postId": "p1",
+      "authorId": "u2",
+      "body": "This reads like a map legend for a city I want to visit. Especially the bus sigh.",
+      "createdAt": "2026-02-25T15:12:00Z"
+    },
+    {
+      "id": "c2",
+      "postId": "p1",
+      "authorId": "u3",
+      "body": "We do this in the garden too: small signals that tell you when the soil is ready. Love this framing.",
+      "createdAt": "2026-02-25T16:05:00Z"
+    },
+    {
+      "id": "c3",
+      "postId": "p1",
+      "authorId": "u4",
+      "body": "The crosswalk nod is real. It is the most local form of trust.",
+      "createdAt": "2026-02-25T18:22:00Z"
+    }
+  ]
+}
