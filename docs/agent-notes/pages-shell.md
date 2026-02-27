@@ -6,6 +6,7 @@
 - Built dual build system: local script + GitHub Actions workflow producing identical output
 - Designed landing page listing all steps with auto-extracted descriptions
 - Created about page explaining experiment purpose and navigation
+- Consolidated and standardized landing/about page explanatory content across experiment variants using canonical copy
 - Global shell provides step selector, agent notes viewer, prompt viewer, and copy-link functionality
 - Responsive design with mobile hamburger menu and collapsible sidebar
 - No secrets/tokens required - uses official GitHub Actions and Pages v4 APIs

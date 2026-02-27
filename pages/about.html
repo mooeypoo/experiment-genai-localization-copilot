@@ -199,77 +199,132 @@
         <h2>About This Experiment</h2>
 
         <p>
-          This experiment examines how an AI coding assistant (GitHub Copilot) makes decisions 
-          when incrementally adding internationalization and localization features to a Vue.js application. 
-          By documenting each step's decisions, tradeoffs, and implementation choices, we can observe 
-          what the AI prioritizes, what it overlooks, and how it adapts to evolving constraints.
+          The GenAI Incremental Localization Experiment is a structured exploration of how AI coding assistants behave when software requirements evolve incrementally.
         </p>
 
-        <h3>Purpose</h3>
         <p>
-          Traditional software localization involves many subtle decisions—message structure, 
-          pluralization rules, text direction, cultural adaptation, and more. By having an AI 
-          assistant build this incrementally, we can:
+          Rather than asking an assistant to build a fully internationalized system from the start, we follow a more realistic development path:
         </p>
         <ul>
-          <li>Observe which localization patterns the AI chooses naturally</li>
-          <li>Identify what the AI misses or implements incorrectly</li>
-          <li>Understand how explicit prompts shape implementation quality</li>
-          <li>Document real-world decisions and tradeoffs in i18n development</li>
+          <li>Begin with a small monolingual application.</li>
+          <li>Add features normally.</li>
+          <li>Introduce translation requirements later.</li>
+          <li>Add right-to-left languages.</li>
+          <li>Introduce character constraints.</li>
+          <li>Add locale-aware sorting and formatting.</li>
+          <li>Refine natural language phrasing.</li>
         </ul>
 
-        <h3>How It Works</h3>
         <p>
-          Each step in this experiment is a git tag (<code>step-01</code>, <code>step-02</code>, etc.) 
-          representing a specific milestone in the app's development. Every step includes:
+          At each stage, we observe:
         </p>
         <ul>
-          <li><strong>Agent Notes:</strong> Detailed documentation of decisions, rationale, ambiguities, tradeoffs, and known issues</li>
-          <li><strong>Prompt:</strong> The instruction given to the AI assistant (when available)</li>
-          <li><strong>Working Code:</strong> A fully functional snapshot of the app at that stage</li>
+          <li>What architectural decisions were made?</li>
+          <li>Did the assistant anticipate future complexity?</li>
+          <li>What had to be refactored?</li>
+          <li>How were ambiguities resolved?</li>
+          <li>What assumptions became visible only under pressure?</li>
         </ul>
 
-        <div class="highlight-box">
-          <p>
-            <strong>Navigation Tip:</strong> When viewing a step, the sidebar shows the agent notes 
-            and prompt for that specific step. Use the step selector in the top bar to navigate 
-            between different stages of development.
-          </p>
-        </div>
-
-        <h3>The Application</h3>
+        <h3>Why Localization?</h3>
         <p>
-          The demo app is a simple social feed built with Vue 3, starting as a basic English-only 
-          prototype and evolving into a fully internationalized application supporting multiple 
-          languages, including right-to-left scripts, locale-aware formatting, and cultural considerations.
+          Localization is one of the most underestimated forces in software architecture.
+        </p>
+        <p>
+          It affects:
+        </p>
+        <ul>
+          <li>Layout and direction</li>
+          <li>Validation rules</li>
+          <li>Data modeling</li>
+          <li>Sorting logic</li>
+          <li>Formatting APIs</li>
+          <li>UX microcopy</li>
+          <li>Accessibility</li>
+        </ul>
+        <p>
+          It is rarely treated as foundational at the start of a project.
+        </p>
+        <p>
+          That makes it an ideal pressure test for incremental AI development.
         </p>
 
-        <h3>Repository</h3>
+        <h3>Why Incremental?</h3>
         <p>
-          Full source code, build scripts, and documentation are available on GitHub:
-          <br>
-          <a href="https://github.com/mooeypoo/experiment-genai-localization-copilot" target="_blank" rel="noopener">
-            github.com/mooeypoo/experiment-genai-localization-copilot
-          </a>
+          Real software projects do not begin with perfect foresight.
+        </p>
+        <p>
+          They evolve.
+        </p>
+        <p>
+          This experiment mirrors that reality.
+        </p>
+        <p>
+          We intentionally do not warn the assistant in advance that complex localization constraints are coming.
+        </p>
+        <p>
+          The goal is not to trick the AI.
+        </p>
+        <p>
+          The goal is to observe how it reasons and adapts under evolving constraints.
         </p>
 
-        <h3>Video Walkthrough</h3>
+        <h3>Multiple Assistants, Same Structure</h3>
         <p>
-          <em>(Video coming soon - this section will be updated with a link to a detailed walkthrough)</em>
+          This experiment was conducted multiple times using different AI coding assistants.
+        </p>
+        <p>
+          Each run follows the same incremental structure and staged prompts.
+        </p>
+        <p>
+          The only variable changed was the assistant.
+        </p>
+        <p>
+          You can explore both versions:
+        </p>
+        <p>
+          Copilot version:<br>
+          <a href="https://mooeypoo.github.io/experiment-genai-localization/" target="_blank" rel="noopener">https://mooeypoo.github.io/experiment-genai-localization/</a>
+        </p>
+        <p>
+          GitHub Copilot version:<br>
+          <a href="https://mooeypoo.github.io/experiment-genai-localization-copilot/" target="_blank" rel="noopener">https://mooeypoo.github.io/experiment-genai-localization-copilot/</a>
+        </p>
+        <p>
+          This is not about ranking assistants.
+        </p>
+        <p>
+          It is about observing reasoning patterns.
         </p>
 
-        <h3>About the Author</h3>
+        <h3>How the Site Works</h3>
         <p>
-          This experiment was created by <a href="https://moriel.tech" target="_blank" rel="noopener">Moriel Schottlender</a>, 
-          a software engineer interested in internationalization, developer tools, and AI-assisted development.
+          Each stage corresponds to a git tag.
+        </p>
+        <p>
+          For every stage, you can view:
+        </p>
+        <ul>
+          <li>The running application at that point in history.</li>
+          <li>The agent’s reasoning notes.</li>
+          <li>The exact prompt that produced that stage.</li>
+        </ul>
+        <p>
+          The global shell provides navigation and context.
+          Each step is a historical snapshot.
         </p>
 
-        <h3>Technical Implementation</h3>
+        <h3>Limitations</h3>
         <p>
-          This GitHub Pages site is built from git tags using a custom build pipeline. Each step's 
-          code remains frozen in history, while the global shell (navigation, sidebar, styling) 
-          can be updated independently. This ensures historical steps remain accurate exhibits 
-          while allowing the viewing experience to improve over time.
+          This experiment does not claim:
+        </p>
+        <ul>
+          <li>That the resulting applications are production-ready.</li>
+          <li>That localization coverage is complete.</li>
+          <li>That these outcomes represent all possible AI development paths.</li>
+        </ul>
+        <p>
+          It is a structured exploration, not a benchmark.
         </p>
       </article>
     </div>
