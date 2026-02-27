@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GenAI Incremental Localization Experiment (Copilot)</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --primary: #2563eb;
+      --primary-hover: #1d4ed8;
+      --text: #1f2937;
+      --text-light: #6b7280;
+      --bg: #ffffff;
+      --bg-alt: #f9fafb;
+      --border: #e5e7eb;
+      --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1);
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      line-height: 1.6;
+      color: var(--text);
+      background: var(--bg);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    header {
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      padding: 1.5rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    nav a {
+      margin-left: 2rem;
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    nav a:hover {
+      color: var(--primary);
+    }
+
+    main {
+      padding: 4rem 0;
+      min-height: calc(100vh - 200px);
+    }
+
+    .hero {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .hero h2 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      color: var(--text);
+    }
+
+    .hero p {
+      font-size: 1.125rem;
+      color: var(--text-light);
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .steps-container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .steps-heading {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 2rem;
+      color: var(--text);
+    }
+
+    .steps-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .step-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.5rem;
+      transition: all 0.2s;
+      cursor: pointer;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+
+    .step-card:hover {
+      border-color: var(--primary);
+      box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+      transform: translateY(-2px);
+    }
+
+    .step-tag {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .step-description {
+      font-size: 1rem;
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    .loading {
+      text-align: center;
+      padding: 4rem;
+      color: var(--text-light);
+    }
+
+    .error {
+      text-align: center;
+      padding: 4rem;
+      color: #ef4444;
+    }
+
+    footer {
+      background: var(--bg-alt);
+      border-top: 1px solid var(--border);
+      padding: 2rem 0;
+      margin-top: 4rem;
+      text-align: center;
+      color: var(--text-light);
+      font-size: 0.875rem;
+    }
+
+    footer a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
+      .hero h2 {
+        font-size: 2rem;
+      }
+
+      .hero p {
+        font-size: 1rem;
+      }
+
+      nav a {
+        margin-left: 1rem;
+      }
+
+      main {
+        padding: 2rem 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="header-content">
+        <h1>GenAI Incremental Localization Experiment (Copilot)</h1>
+        <nav>
+          <a href="./about/">About</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <section class="hero">
+        <h2>Examining AI Decision-Making in Localization</h2>
+        <p>
+          We're examining the decisions and operation of an AI coding assistant as we incrementally 
+          add localization constraints to an app, and observing what it chooses, what it misses, 
+          and how it adapts.
+        </p>
+      </section>
+
+      <section class="steps-container">
+        <h3 class="steps-heading">Available Steps</h3>
+        <div id="steps-list" class="steps-list">
+          <div class="loading">Loading steps...</div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>Made by <a href="https://moriel.tech" target="_blank" rel="noopener">Moriel Schottlender</a></p>
+    </div>
+  </footer>
+
+  <script>
+    (async function() {
+      const REPO_NAME = 'experiment-genai-steps-copilot';
+      const stepsList = document.getElementById('steps-list');
+
+      try {
+        const response = await fetch(`/${REPO_NAME}/steps.json`);
+        if (!response.ok) throw new Error('Failed to load steps');
+        
+        const steps = await response.json();
+        
+        if (steps.length === 0) {
+          stepsList.innerHTML = '<div class="error">No steps found</div>';
+          return;
+        }
+
+        stepsList.innerHTML = steps.map(step => `
+          <a href="${step.path}" class="step-card">
+            <div class="step-tag">${step.tag}</div>
+            <div class="step-description">${step.description}</div>
+          </a>
+        `).join('');
+
+      } catch (error) {
+        console.error('Error loading steps:', error);
+        stepsList.innerHTML = '<div class="error">Error loading steps. Please try again later.</div>';
+      }
+    })();
+  </script>
+</body>
+</html>

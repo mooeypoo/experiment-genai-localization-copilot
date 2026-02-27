@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About - GenAI Incremental Localization Experiment (Copilot)</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --primary: #2563eb;
+      --primary-hover: #1d4ed8;
+      --text: #1f2937;
+      --text-light: #6b7280;
+      --bg: #ffffff;
+      --bg-alt: #f9fafb;
+      --border: #e5e7eb;
+      --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1);
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      line-height: 1.6;
+      color: var(--text);
+      background: var(--bg);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    header {
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      padding: 1.5rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    nav a {
+      margin-left: 2rem;
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    nav a:hover {
+      color: var(--primary);
+    }
+
+    main {
+      padding: 4rem 0;
+      min-height: calc(100vh - 200px);
+    }
+
+    .content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    h2 {
+      font-size: 2rem;
+      font-weight: 800;
+      margin-bottom: 2rem;
+      color: var(--text);
+    }
+
+    h3 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-top: 2.5rem;
+      margin-bottom: 1rem;
+      color: var(--text);
+    }
+
+    p {
+      margin-bottom: 1.5rem;
+      color: var(--text);
+    }
+
+    a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    ul {
+      margin-bottom: 1.5rem;
+      padding-left: 2rem;
+    }
+
+    li {
+      margin-bottom: 0.5rem;
+    }
+
+    .highlight-box {
+      background: var(--bg-alt);
+      border-left: 4px solid var(--primary);
+      padding: 1.5rem;
+      margin: 2rem 0;
+      border-radius: 4px;
+    }
+
+    .highlight-box p:last-child {
+      margin-bottom: 0;
+    }
+
+    code {
+      background: var(--bg-alt);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+      font-family: 'Monaco', 'Courier New', monospace;
+    }
+
+    footer {
+      background: var(--bg-alt);
+      border-top: 1px solid var(--border);
+      padding: 2rem 0;
+      margin-top: 4rem;
+      text-align: center;
+      color: var(--text-light);
+      font-size: 0.875rem;
+    }
+
+    footer a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
+      h2 {
+        font-size: 1.75rem;
+      }
+
+      h3 {
+        font-size: 1.25rem;
+      }
+
+      nav a {
+        margin-left: 1rem;
+      }
+
+      main {
+        padding: 2rem 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="header-content">
+        <h1>GenAI Incremental Localization Experiment (Copilot)</h1>
+        <nav>
+          <a href="../">Home</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <article class="content">
+        <h2>About This Experiment</h2>
+
+        <p>
+          This experiment examines how an AI coding assistant (GitHub Copilot) makes decisions 
+          when incrementally adding internationalization and localization features to a Vue.js application. 
+          By documenting each step's decisions, tradeoffs, and implementation choices, we can observe 
+          what the AI prioritizes, what it overlooks, and how it adapts to evolving constraints.
+        </p>
+
+        <h3>Purpose</h3>
+        <p>
+          Traditional software localization involves many subtle decisions—message structure, 
+          pluralization rules, text direction, cultural adaptation, and more. By having an AI 
+          assistant build this incrementally, we can:
+        </p>
+        <ul>
+          <li>Observe which localization patterns the AI chooses naturally</li>
+          <li>Identify what the AI misses or implements incorrectly</li>
+          <li>Understand how explicit prompts shape implementation quality</li>
+          <li>Document real-world decisions and tradeoffs in i18n development</li>
+        </ul>
+
+        <h3>How It Works</h3>
+        <p>
+          Each step in this experiment is a git tag (<code>step-01</code>, <code>step-02</code>, etc.) 
+          representing a specific milestone in the app's development. Every step includes:
+        </p>
+        <ul>
+          <li><strong>Agent Notes:</strong> Detailed documentation of decisions, rationale, ambiguities, tradeoffs, and known issues</li>
+          <li><strong>Prompt:</strong> The instruction given to the AI assistant (when available)</li>
+          <li><strong>Working Code:</strong> A fully functional snapshot of the app at that stage</li>
+        </ul>
+
+        <div class="highlight-box">
+          <p>
+            <strong>Navigation Tip:</strong> When viewing a step, the sidebar shows the agent notes 
+            and prompt for that specific step. Use the step selector in the top bar to navigate 
+            between different stages of development.
+          </p>
+        </div>
+
+        <h3>The Application</h3>
+        <p>
+          The demo app is a simple social feed built with Vue 3, starting as a basic English-only 
+          prototype and evolving into a fully internationalized application supporting multiple 
+          languages, including right-to-left scripts, locale-aware formatting, and cultural considerations.
+        </p>
+
+        <h3>Repository</h3>
+        <p>
+          Full source code, build scripts, and documentation are available on GitHub:
+          <br>
+          <a href="https://github.com/mooeypoo/experiment-genai-steps-copilot" target="_blank" rel="noopener">
+            github.com/mooeypoo/experiment-genai-steps-copilot
+          </a>
+        </p>
+
+        <h3>Video Walkthrough</h3>
+        <p>
+          <em>(Video coming soon - this section will be updated with a link to a detailed walkthrough)</em>
+        </p>
+
+        <h3>About the Author</h3>
+        <p>
+          This experiment was created by <a href="https://moriel.tech" target="_blank" rel="noopener">Moriel Schottlender</a>, 
+          a software engineer interested in internationalization, developer tools, and AI-assisted development.
+        </p>
+
+        <h3>Technical Implementation</h3>
+        <p>
+          This GitHub Pages site is built from git tags using a custom build pipeline. Each step's 
+          code remains frozen in history, while the global shell (navigation, sidebar, styling) 
+          can be updated independently. This ensures historical steps remain accurate exhibits 
+          while allowing the viewing experience to improve over time.
+        </p>
+      </article>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>Made by <a href="https://moriel.tech" target="_blank" rel="noopener">Moriel Schottlender</a></p>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,341 @@
+/**
+ * Global Shell Styles
+ * Modern, minimal, clean design with good typography and accessibility
+ */
+
+:root {
+  --shell-primary: #2563eb;
+  --shell-primary-hover: #1d4ed8;
+  --shell-text: #1f2937;
+  --shell-text-light: #6b7280;
+  --shell-bg: #ffffff;
+  --shell-bg-alt: #f9fafb;
+  --shell-border: #e5e7eb;
+  --shell-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1);
+  --shell-shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+  --shell-success: #10b981;
+  --shell-topbar-height: 60px;
+  --shell-sidebar-width: 400px;
+  --shell-footer-height: 60px;
+}
+
+/* Reset and base */
+#global-shell * {
+  box-sizing: border-box;
+}
+
+#global-shell {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  color: var(--shell-text);
+  line-height: 1.6;
+}
+
+/* Topbar */
+.shell-topbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--shell-topbar-height);
+  background: var(--shell-bg);
+  border-bottom: 1px solid var(--shell-border);
+  box-shadow: var(--shell-shadow);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1.5rem;
+  z-index: 1000;
+  gap: 1rem;
+}
+
+.shell-topbar-left,
+.shell-topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.shell-hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  width: 40px;
+  height: 40px;
+  border-radius: 6px;
+  transition: background-color 0.2s;
+}
+
+.shell-hamburger:hover {
+  background-color: var(--shell-bg-alt);
+}
+
+.shell-hamburger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background-color: var(--shell-text);
+  transition: transform 0.2s;
+}
+
+.shell-hamburger.active span:nth-child(1) {
+  transform: translateY(6px) rotate(45deg);
+}
+
+.shell-hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.shell-hamburger.active span:nth-child(3) {
+  transform: translateY(-6px) rotate(-45deg);
+}
+
+.shell-step-selector {
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--shell-border);
+  border-radius: 6px;
+  background: var(--shell-bg);
+  color: var(--shell-text);
+  font-size: 0.875rem;
+  cursor: pointer;
+  max-width: 400px;
+  min-width: 200px;
+  transition: border-color 0.2s;
+}
+
+.shell-step-selector:hover {
+  border-color: var(--shell-primary);
+}
+
+.shell-step-selector:focus {
+  outline: none;
+  border-color: var(--shell-primary);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.shell-nav-link {
+  padding: 0.5rem 1rem;
+  color: var(--shell-text);
+  text-decoration: none;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.shell-nav-link:hover {
+  background-color: var(--shell-bg-alt);
+  color: var(--shell-primary);
+}
+
+.shell-copy-link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: var(--shell-primary);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  position: relative;
+}
+
+.shell-copy-link:hover {
+  background-color: var(--shell-primary-hover);
+}
+
+.shell-copy-link .copy-icon {
+  font-size: 1rem;
+}
+
+.shell-copy-link .copied-text {
+  display: none;
+}
+
+.shell-copy-link.copied .copy-text {
+  display: none;
+}
+
+.shell-copy-link.copied .copied-text {
+  display: inline;
+}
+
+.shell-copy-link.copied {
+  background-color: var(--shell-success);
+}
+
+/* Layout */
+.shell-layout {
+  display: flex;
+  margin-top: var(--shell-topbar-height);
+  min-height: calc(100vh - var(--shell-topbar-height) - var(--shell-footer-height));
+}
+
+.shell-sidebar {
+  width: var(--shell-sidebar-width);
+  background: var(--shell-bg-alt);
+  border-right: 1px solid var(--shell-border);
+  overflow-y: auto;
+  position: sticky;
+  top: var(--shell-topbar-height);
+  height: calc(100vh - var(--shell-topbar-height));
+  transition: transform 0.3s ease;
+}
+
+.shell-sidebar-content {
+  padding: 2rem;
+}
+
+.shell-sidebar-section {
+  margin-bottom: 3rem;
+}
+
+.shell-sidebar-section:last-child {
+  margin-bottom: 0;
+}
+
+.shell-sidebar-heading {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0 0 1rem 0;
+  color: var(--shell-text);
+}
+
+.shell-sidebar-iframe-container {
+  background: var(--shell-bg);
+  border: 1px solid var(--shell-border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.shell-loading,
+.shell-error {
+  padding: 2rem;
+  text-align: center;
+  color: var(--shell-text-light);
+  font-size: 0.875rem;
+}
+
+.shell-error {
+  color: #ef4444;
+}
+
+.shell-main {
+  flex: 1;
+  min-width: 0;
+  overflow-x: hidden;
+}
+
+/* Footer */
+.shell-footer {
+  background: var(--shell-bg-alt);
+  border-top: 1px solid var(--shell-border);
+  padding: 1.5rem;
+  text-align: center;
+  font-size: 0.875rem;
+  color: var(--shell-text-light);
+}
+
+.shell-footer a {
+  color: var(--shell-primary);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.shell-footer a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .shell-hamburger {
+    display: flex;
+  }
+
+  .shell-step-selector {
+    max-width: 200px;
+    min-width: 150px;
+    font-size: 0.8rem;
+  }
+
+  .shell-nav-link {
+    display: none;
+  }
+
+  .shell-sidebar {
+    position: fixed;
+    top: var(--shell-topbar-height);
+    left: 0;
+    z-index: 999;
+    transform: translateX(-100%);
+    box-shadow: var(--shell-shadow-lg);
+  }
+
+  .shell-sidebar.open {
+    transform: translateX(0);
+  }
+
+  .shell-sidebar-content {
+    padding: 1.5rem;
+  }
+
+  .shell-main {
+    width: 100%;
+  }
+
+  .shell-copy-link .copy-text {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .shell-topbar {
+    padding: 0 1rem;
+  }
+
+  .shell-step-selector {
+    max-width: 140px;
+    min-width: 120px;
+    font-size: 0.75rem;
+  }
+
+  .shell-copy-link {
+    padding: 0.5rem;
+  }
+
+  .shell-sidebar {
+    width: 100%;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .shell-topbar,
+  .shell-sidebar,
+  .shell-footer {
+    border-width: 2px;
+  }
+
+  .shell-step-selector,
+  .shell-sidebar-iframe-container {
+    border-width: 2px;
+  }
+}
+
+/* Dark mode support (future enhancement) */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --shell-text: #f9fafb;
+    --shell-text-light: #9ca3af;
+    --shell-bg: #111827;
+    --shell-bg-alt: #1f2937;
+    --shell-border: #374151;
+  }
+}
