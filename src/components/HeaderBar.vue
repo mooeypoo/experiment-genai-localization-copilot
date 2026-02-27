@@ -1,5 +1,6 @@
 <script setup>
 import { useI18n } from 'vue-i18n'
+import { RouterLink } from 'vue-router'
 import NavigationBar from './NavigationBar.vue'
 import ViewingAsSelector from './ViewingAsSelector.vue'
 import LanguageSwitcher from './LanguageSwitcher.vue'

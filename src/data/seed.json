@@ -35,6 +35,42 @@
       "bio": "Night shift barista and morning drone photographer.",
       "location": "Austin, TX",
       "avatar": "https://api.dicebear.com/7.x/shapes/svg?seed=signal-u4"
+    },
+    {
+      "id": "u5",
+      "name": "Yasmin Behnam",
+      "handle": "yasmynb",
+      "pronouns": "she/her",
+      "bio": "Graphic designer exploring traditional tile patterns in contemporary interfaces.",
+      "location": "San Francisco, CA",
+      "avatar": "https://api.dicebear.com/7.x/shapes/svg?seed=signal-u5"
+    },
+    {
+      "id": "u6",
+      "name": "Amir Khalil",
+      "handle": "amirk",
+      "pronouns": "he/him",
+      "bio": "Sound engineer building tools for field recording in remote places.",
+      "location": "Denver, CO",
+      "avatar": "https://api.dicebear.com/7.x/shapes/svg?seed=signal-u6"
+    },
+    {
+      "id": "u7",
+      "name": "Noa Mizrahi",
+      "handle": "noam",
+      "pronouns": "they/them",
+      "bio": "Choreographer documenting movement in urban spaces with motion capture.",
+      "location": "Los Angeles, CA",
+      "avatar": "https://api.dicebear.com/7.x/shapes/svg?seed=signal-u7"
+    },
+    {
+      "id": "u8",
+      "name": "Zara Kapoor",
+      "handle": "zaracodes",
+      "pronouns": "any pronouns",
+      "bio": "Researcher studying how language shapes perceived space in digital environments.",
+      "location": "Boston, MA",
+      "avatar": "https://api.dicebear.com/7.x/shapes/svg?seed=signal-u8"
     }
   ],
   "post": {
@@ -66,6 +102,27 @@
       "authorId": "u4",
       "body": "The crosswalk nod is real. It is the most local form of trust.",
       "createdAt": "2026-02-25T18:22:00Z"
+    },
+    {
+      "id": "c4",
+      "postId": "p1",
+      "authorId": "u5",
+      "body": "Your orange cones remind me of the tiles my grandmother used. Same story, different medium.",
+      "createdAt": "2026-02-25T19:45:00Z"
+    },
+    {
+      "id": "c5",
+      "postId": "p1",
+      "authorId": "u6",
+      "body": "Have you recorded these signals? I'd love to layer some of them into a soundscape.",
+      "createdAt": "2026-02-26T08:30:00Z"
+    },
+    {
+      "id": "c6",
+      "postId": "p1",
+      "authorId": "u8",
+      "body": "This is fascinating—the signals themselves become a language. Different cities have different dialects.",
+      "createdAt": "2026-02-26T10:15:00Z"
     }
   ]
 }
