@@ -35,10 +35,11 @@ const formattedCharCounterText = computed(() => {
 const formattedCounterHint = computed(() => {
   const remaining = bioRemaining.value
   if (remaining < 0) {
-    return t('charCounter.over', { count: formatNumber(Math.abs(remaining)) })
+    const absRemaining = Math.abs(remaining)
+    return t('charCounter.over', absRemaining, { count: formatNumber(absRemaining) })
   }
   if (remaining <= 20) {
-    return t('charCounter.remaining', { count: formatNumber(remaining) })
+    return t('charCounter.remaining', remaining, { count: formatNumber(remaining) })
   }
   return ''
 })

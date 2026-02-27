@@ -69,7 +69,7 @@ export const validateUser = (name, bio, pronouns) => {
   }
   const trimmedName = name.trim()
   if (trimmedName.length === 0) {
-    return 'validation.displayNameEmpty'
+    return 'validation.displayNameRequired'
   }
   if (trimmedName.length > 100) {
     return 'validation.displayNameTooLong'
@@ -110,11 +110,11 @@ export const createUser = ({ name, bio, pronouns }) => {
 
 export const validateComment = (body, authorId) => {
   if (!body || typeof body !== 'string') {
-    return 'validation.commentBodyRequired'
+    return 'validation.commentRequired'
   }
   const trimmed = body.trim()
   if (trimmed.length === 0) {
-    return 'validation.commentEmpty'
+    return 'validation.commentRequired'
   }
   if (trimmed.length > 500) {
     return 'validation.commentTooLong'

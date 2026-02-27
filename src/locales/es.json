@@ -45,28 +45,22 @@
     "communityCount": "{count} personas en la sala | {count} persona en la sala | {count} personas en la sala"
   },
   "profile": {
-    "viewActivity": {
-      "her": "Ver su actividad y contribuciones.",
-      "his": "Ver su actividad y contribuciones.",
-      "their": "Ver su actividad y contribuciones."
-    },
-    "notFound": "No pudimos encontrar ese perfil."
+    "viewActivity": "Ver {pronoun} actividad y contribuciones.",
+    "notFound": "Perfil no encontrado."
   },
   "validation": {
     "displayNameRequired": "El nombre para mostrar es obligatorio.",
-    "displayNameEmpty": "El nombre para mostrar no puede estar vacío.",
-    "displayNameTooLong": "El nombre para mostrar no puede exceder los 100 caracteres.",
-    "bioTooLong": "La biografía no puede exceder los 160 caracteres.",
+    "displayNameTooLong": "El nombre para mostrar no puede exceder 100 caracteres.",
+    "bioTooLong": "La biografía no puede exceder 160 caracteres.",
     "invalidPronouns": "Selección de pronombres inválida.",
-    "commentBodyRequired": "El cuerpo del comentario es obligatorio.",
-    "commentEmpty": "El comentario no puede estar vacío.",
-    "commentTooLong": "El comentario no puede exceder los 500 caracteres.",
-    "authorRequired": "El ID del autor es obligatorio.",
-    "invalidAuthor": "ID de autor inválido."
+    "commentRequired": "El comentario es obligatorio.",
+    "commentTooLong": "El comentario no puede exceder 500 caracteres.",
+    "authorRequired": "El autor es obligatorio.",
+    "invalidAuthor": "Autor inválido."
   },
   "charCounter": {
     "format": "{current} / {max}",
-    "over": "({count} de más)",
-    "remaining": "({count} restantes)"
+    "over": "{count} de más | {count} de más | {count} de más",
+    "remaining": "{count} restante | {count} restante | {count} restantes"
   }
 }

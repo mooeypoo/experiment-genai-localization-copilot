@@ -45,28 +45,22 @@
     "communityCount": "{count} people in the room | {count} person in the room | {count} people in the room"
   },
   "profile": {
-    "viewActivity": {
-      "her": "View her activity and contributions.",
-      "his": "View his activity and contributions.",
-      "their": "View their activity and contributions."
-    },
-    "notFound": "We could not find that profile."
+    "viewActivity": "View {pronoun} activity and contributions.",
+    "notFound": "Profile not found."
   },
   "validation": {
     "displayNameRequired": "Display name is required.",
-    "displayNameEmpty": "Display name cannot be empty.",
     "displayNameTooLong": "Display name cannot exceed 100 characters.",
     "bioTooLong": "Bio cannot exceed 160 characters.",
     "invalidPronouns": "Invalid pronouns selection.",
-    "commentBodyRequired": "Comment body is required.",
-    "commentEmpty": "Comment cannot be empty.",
+    "commentRequired": "Comment is required.",
     "commentTooLong": "Comment cannot exceed 500 characters.",
-    "authorRequired": "Author ID is required.",
-    "invalidAuthor": "Invalid author ID."
+    "authorRequired": "Author is required.",
+    "invalidAuthor": "Invalid author."
   },
   "charCounter": {
     "format": "{current} / {max}",
-    "over": "({count} over)",
-    "remaining": "({count} remaining)"
+    "over": "{count} over | {count} over | {count} over",
+    "remaining": "{count} left | {count} left | {count} left"
   }
 }

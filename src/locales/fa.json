@@ -45,28 +45,22 @@
     "communityCount": "{count} نفر در اتاق | یک نفر در اتاق | {count} نفر در اتاق"
   },
   "profile": {
-    "viewActivity": {
-      "her": "فعالیت و مشارکت‌های او را ببین.",
-      "his": "فعالیت و مشارکت‌های او را ببین.",
-      "their": "فعالیت و مشارکت‌های آنها را ببین."
-    },
-    "notFound": "ما نتوانستیم این پروفایل را پیدا کنیم."
+    "viewActivity": "مشاهده فعالیت و مشارکت‌های {pronoun}.",
+    "notFound": "پروفایل یافت نشد."
   },
   "validation": {
     "displayNameRequired": "نام نمایشی الزامی است.",
-    "displayNameEmpty": "نام نمایشی نمی‌تواند خالی باشد.",
     "displayNameTooLong": "نام نمایشی نمی‌تواند از 100 کاراکتر بیشتر باشد.",
     "bioTooLong": "بیوگرافی نمی‌تواند از 160 کاراکتر بیشتر باشد.",
     "invalidPronouns": "انتخاب ضمیر نامعتبر است.",
-    "commentBodyRequired": "متن نظر الزامی است.",
-    "commentEmpty": "نظر نمی‌تواند خالی باشد.",
+    "commentRequired": "نظر الزامی است.",
     "commentTooLong": "نظر نمی‌تواند از 500 کاراکتر بیشتر باشد.",
-    "authorRequired": "شناسه نویسنده الزامی است.",
-    "invalidAuthor": "شناسه نویسنده نامعتبر است."
+    "authorRequired": "نویسنده الزامی است.",
+    "invalidAuthor": "نویسنده نامعتبر است."
   },
   "charCounter": {
     "format": "{current} / {max}",
-    "over": "({count} اضافی)",
-    "remaining": "({count} باقی)"
+    "over": "{count} اضافی | {count} اضافی | {count} اضافی",
+    "remaining": "{count} باقی‌مانده | {count} باقی‌مانده | {count} باقی‌مانده"
   }
 }

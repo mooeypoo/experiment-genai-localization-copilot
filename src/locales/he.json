@@ -45,28 +45,22 @@
     "communityCount": "{count} אנשים בחדר | אדם אחד בחדר | {count} אנשים בחדר"
   },
   "profile": {
-    "viewActivity": {
-      "her": "צפי בפעילותה וביצירתה.",
-      "his": "צפי בפעילותו ביצירתו.",
-      "their": "צפי בפעילותם וביצירתם."
-    },
-    "notFound": "לא הצלחנו למצוא את הפרופיל הזה."
+    "viewActivity": "צפייה בפעילות ובתרומות {pronoun}.",
+    "notFound": "הפרופיל לא נמצא."
   },
   "validation": {
     "displayNameRequired": "שם התצוגה הוא חובה.",
-    "displayNameEmpty": "שם התצוגה לא יכול להיות ריק.",
-    "displayNameTooLong": "שם התצוגה לא יכול עלון על 100 תווים.",
-    "bioTooLong": "הביוגרפיה לא יכולה עלון על 160 תווים.",
+    "displayNameTooLong": "שם התצוגה לא יכול לחרוג מ־100 תווים.",
+    "bioTooLong": "הביוגרפיה לא יכולה לחרוג מ־160 תווים.",
     "invalidPronouns": "בחירת כינויים לא תקינה.",
-    "commentBodyRequired": "גוף התגובה הוא חובה.",
-    "commentEmpty": "התגובה לא יכולה להיות ריקה.",
-    "commentTooLong": "התגובה לא יכולה עלון על 500 תווים.",
-    "authorRequired": "זהות המחבר היא חובה.",
-    "invalidAuthor": "זהות מחבר לא תקינה."
+    "commentRequired": "התגובה היא חובה.",
+    "commentTooLong": "התגובה לא יכולה לחרוג מ־500 תווים.",
+    "authorRequired": "המחבר הוא חובה.",
+    "invalidAuthor": "מחבר לא תקין."
   },
   "charCounter": {
     "format": "{current} / {max}",
-    "over": "({count} עלון)",
-    "remaining": "({count} נותר)"
+    "over": "{count} מעבר למגבלה | {count} מעבר למגבלה | {count} מעבר למגבלה",
+    "remaining": "{count} נותרו | {count} נותר | {count} נותרו"
   }
 }

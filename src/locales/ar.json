@@ -45,28 +45,22 @@
     "communityCount": "{count} أشخاص في الغرفة | شخص واحد في الغرفة | {count} أشخاص في الغرفة"
   },
   "profile": {
-    "viewActivity": {
-      "her": "عرض نشاطها ومساهماتها.",
-      "his": "عرض نشاطه ومساهماته.",
-      "their": "عرض نشاطهم ومساهماتهم."
-    },
-    "notFound": "لم نتمكن من العثور على هذا الملف الشخصي."
+    "viewActivity": "عرض نشاط ومساهمات {pronoun}.",
+    "notFound": "الملف الشخصي غير موجود."
   },
   "validation": {
     "displayNameRequired": "اسم العرض مطلوب.",
-    "displayNameEmpty": "اسم العرض لا يمكن أن يكون فارغًا.",
     "displayNameTooLong": "اسم العرض لا يمكن أن يتجاوز 100 حرف.",
     "bioTooLong": "السيرة الذاتية لا يمكن أن تتجاوز 160 حرفًا.",
     "invalidPronouns": "اختيار الضمائر غير صحيح.",
-    "commentBodyRequired": "نص التعليق مطلوب.",
-    "commentEmpty": "التعليق لا يمكن أن يكون فارغًا.",
+    "commentRequired": "التعليق مطلوب.",
     "commentTooLong": "التعليق لا يمكن أن يتجاوز 500 حرف.",
-    "authorRequired": "معرف المؤلف مطلوب.",
-    "invalidAuthor": "معرف المؤلف غير صحيح."
+    "authorRequired": "المؤلف مطلوب.",
+    "invalidAuthor": "المؤلف غير صحيح."
   },
   "charCounter": {
     "format": "{current} / {max}",
-    "over": "({count} إضافي)",
-    "remaining": "({count} متبقي)"
+    "over": "{count} إضافي | {count} إضافي | {count} إضافي",
+    "remaining": "{count} متبقي | {count} متبقي | {count} متبقية"
   }
 }
