@@ -44,17 +44,6 @@ function log(message, ...args) {
   console.log(`[build-pages] ${message}`, ...args);
 }
 
-function extractFirstHeading(markdown) {
-  const lines = markdown.split('\n');
-  for (const line of lines) {
-    const match = line.match(/^#\s+(.+)$/);
-    if (match) {
-      return match[1].trim();
-    }
-  }
-  return null;
-}
-
 function renderMarkdown(markdown, title = '') {
   const html = marked.parse(markdown);
   return `<!DOCTYPE html>
@@ -70,7 +59,8 @@ function renderMarkdown(markdown, title = '') {
       max-width: 800px;
       margin: 0 auto;
       padding: 2rem;
-      color: #333;
+      color: #0f172a;
+      background: #ffffff;
     }
     h1, h2, h3, h4, h5, h6 {
       margin-top: 2rem;
@@ -81,13 +71,13 @@ function renderMarkdown(markdown, title = '') {
     h2 { font-size: 1.5rem; }
     h3 { font-size: 1.25rem; }
     code {
-      background: #f5f5f5;
+      background: #eef2ff;
       padding: 0.2em 0.4em;
       border-radius: 3px;
       font-size: 0.9em;
     }
     pre {
-      background: #f5f5f5;
+      background: #eef2ff;
       padding: 1rem;
       border-radius: 5px;
       overflow-x: auto;
@@ -97,7 +87,7 @@ function renderMarkdown(markdown, title = '') {
       padding: 0;
     }
     a {
-      color: #0066cc;
+      color: #1d4ed8;
       text-decoration: none;
     }
     a:hover {
@@ -118,6 +108,18 @@ function renderMarkdown(markdown, title = '') {
 function getStepNumber(tag) {
   const match = tag.match(/step-(\d+)/);
   return match ? parseInt(match[1], 10) : 0;
+}
+
+function getStepId(tag) {
+  const match = tag.match(/step-(\d+)/);
+  if (!match) return '00';
+  return match[1].padStart(2, '0');
+}
+
+function getTagDescription(tag) {
+  const result = exec(`git for-each-ref refs/tags/${tag} --format="%(contents:subject)"`, { quiet: true })
+    .trim();
+  return result || '';
 }
 
 // Main build function
@@ -155,11 +157,15 @@ async function buildPages() {
     log(`Found ${tags.length} steps: ${tags.join(', ')}`);
 
     const stepsMetadata = [];
+    const tagDescriptions = Object.fromEntries(
+      tags.map((tag) => [tag, getTagDescription(tag)])
+    );
 
     // Build each step
     for (const tag of tags) {
       log(`\n=== Building ${tag} ===`);
       const stepNum = getStepNumber(tag);
+      const stepId = getStepId(tag);
       const stepDir = path.join(DIST_DIR, tag);
 
       // Checkout tag
@@ -171,7 +177,7 @@ async function buildPages() {
       exec('npm install', { quiet: true });
 
       // Build Vue app with correct base path
-      const basePath = `/${REPO_NAME}/${tag}/`;
+      const basePath = './';
       log(`Building with base path: ${basePath}`);
       
       // Temporarily modify vite.config.js to set base path
@@ -200,32 +206,37 @@ async function buildPages() {
       fs.cpSync(distPath, stepDir, { recursive: true });
       log(`Copied build to ${stepDir}`);
 
-      // Inject global shell into index.html
+      // Create a shell wrapper page and move the built app to app.html
       const indexPath = path.join(stepDir, 'index.html');
+      const appPath = path.join(stepDir, 'app.html');
       if (fs.existsSync(indexPath)) {
-        let indexHtml = fs.readFileSync(indexPath, 'utf8');
-        
-        // Inject shell CSS and JS before </head> and </body>
-        const shellCssTag = `<link rel="stylesheet" href="../shell/shell.css">`;
-        const shellJsTag = `<script src="../shell/shell.js"></script>`;
-        
-        indexHtml = indexHtml.replace('</head>', `  ${shellCssTag}\n  </head>`);
-        indexHtml = indexHtml.replace('</body>', `  ${shellJsTag}\n</body>`);
-        
-        fs.writeFileSync(indexPath, indexHtml);
-        log('Injected global shell into index.html');
+        fs.renameSync(indexPath, appPath);
+
+        const shellWrapper = `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>${tag} - GenAI Incremental Localization Experiment (Copilot)</title>
+  <link rel="stylesheet" href="../shell/shell.css">
+</head>
+<body>
+  <script src="../shell/shell.js"></script>
+</body>
+</html>`;
+
+        fs.writeFileSync(indexPath, shellWrapper);
+        log('Created shell wrapper index.html and moved app to app.html');
       }
 
       // Extract and render agent notes
-      let stepDescription = `Step ${stepNum}`;
-      const agentNotesPath = path.join(ROOT, 'docs', 'agent-notes', `${stepNum}.md`);
+      const stepId_padded = getStepId(tag);
+      const customDesc = tagDescriptions[tag];
+      const stepDescription = customDesc ? `Step ${stepId_padded}: ${customDesc}` : `Step ${stepId_padded}`;
+      const agentNotesPath = path.join(ROOT, 'docs', 'agent-notes', `${stepId}.md`);
       
       if (fs.existsSync(agentNotesPath)) {
         const agentNotesContent = fs.readFileSync(agentNotesPath, 'utf8');
-        const firstHeading = extractFirstHeading(agentNotesContent);
-        if (firstHeading) {
-          stepDescription = firstHeading;
-        }
         
         const notesHtml = renderMarkdown(agentNotesContent, `Agent Notes - ${tag}`);
         fs.writeFileSync(path.join(stepDir, 'notes.html'), notesHtml);
@@ -237,7 +248,7 @@ async function buildPages() {
       }
 
       // Extract and render prompt
-      const promptPath = path.join(ROOT, 'docs', 'prompts', `${stepNum}.md`);
+      const promptPath = path.join(ROOT, 'docs', 'prompts', `${stepId}.md`);
       
       if (fs.existsSync(promptPath)) {
         const promptContent = fs.readFileSync(promptPath, 'utf8');
@@ -256,6 +267,7 @@ async function buildPages() {
         stepNumber: stepNum,
         description: stepDescription,
         path: `${tag}/`,
+        appPath: `${tag}/app.html`,
         notesPath: `${tag}/notes.html`,
         promptPath: `${tag}/prompt.html`
       });

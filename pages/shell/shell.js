@@ -54,6 +54,9 @@
       // Inject shell UI
       injectShell();
       
+      // Load app frame
+      loadAppFrame();
+
       // Load sidebar content
       loadSidebarContent();
       
@@ -113,7 +116,7 @@
         </aside>
         
         <main class="shell-main" id="shell-main">
-          <!-- Original page content will be here -->
+          <iframe class="shell-app-frame" id="shell-app-frame" title="Step app" loading="lazy"></iframe>
         </main>
       </div>
       
@@ -122,20 +125,15 @@
       </footer>
     `;
 
-    // Move existing body content into shell-main
-    const main = shellContainer.querySelector('#shell-main');
-    while (body.firstChild) {
-      main.appendChild(body.firstChild);
-    }
-
-    // Append shell to body
+    // Replace existing body content with shell
+    body.innerHTML = '';
     body.appendChild(shellContainer);
   }
 
   function generateStepOptions() {
     return stepsData.map(step => {
       const selected = step.tag === currentStep ? ' selected' : '';
-      return `<option value="${step.tag}"${selected}>${step.tag}: ${step.description}</option>`;
+      return `<option value="${step.tag}"${selected}>${step.description}</option>`;
     }).join('');
   }
 
@@ -148,24 +146,15 @@
 
     // Load agent notes
     const notesContainer = document.getElementById('shell-notes-content');
-    fetch(joinBase(currentStepData.notesPath))
-      .then(response => response.text())
-      .then(html => {
+    const notesUrl = joinBase(currentStepData.notesPath);
+    fetch(notesUrl)
+      .then(response => {
+        if (!response.ok) throw new Error('Notes not found');
         const iframe = document.createElement('iframe');
-        iframe.srcdoc = html;
+        iframe.src = notesUrl;
         iframe.style.width = '100%';
         iframe.style.border = 'none';
         iframe.style.minHeight = '400px';
-        iframe.onload = () => {
-          // Adjust iframe height to content
-          try {
-            const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
-            const height = iframeDoc.body.scrollHeight;
-            iframe.style.height = `${height + 20}px`;
-          } catch (e) {
-            console.warn('[shell] Could not adjust iframe height:', e);
-          }
-        };
         notesContainer.innerHTML = '';
         notesContainer.appendChild(iframe);
       })
@@ -176,23 +165,15 @@
 
     // Load prompt
     const promptContainer = document.getElementById('shell-prompt-content');
-    fetch(joinBase(currentStepData.promptPath))
-      .then(response => response.text())
-      .then(html => {
+    const promptUrl = joinBase(currentStepData.promptPath);
+    fetch(promptUrl)
+      .then(response => {
+        if (!response.ok) throw new Error('Prompt not found');
         const iframe = document.createElement('iframe');
-        iframe.srcdoc = html;
+        iframe.src = promptUrl;
         iframe.style.width = '100%';
         iframe.style.border = 'none';
         iframe.style.minHeight = '200px';
-        iframe.onload = () => {
-          try {
-            const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
-            const height = iframeDoc.body.scrollHeight;
-            iframe.style.height = `${height + 20}px`;
-          } catch (e) {
-            console.warn('[shell] Could not adjust iframe height:', e);
-          }
-        };
         promptContainer.innerHTML = '';
         promptContainer.appendChild(iframe);
       })
@@ -200,6 +181,13 @@
         console.error('[shell] Error loading prompt:', error);
         promptContainer.innerHTML = '<p class="shell-error">Failed to load prompt.</p>';
       });
+  }
+
+  function loadAppFrame() {
+    const currentStepData = stepsData.find(s => s.tag === currentStep);
+    const appFrame = document.getElementById('shell-app-frame');
+    if (!currentStepData || !appFrame) return;
+    appFrame.src = joinBase(currentStepData.appPath || `${currentStep}/app.html`);
   }
 
   function setupEventListeners() {

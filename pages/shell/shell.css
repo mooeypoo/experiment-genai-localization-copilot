@@ -233,6 +233,13 @@
   overflow-x: hidden;
 }
 
+.shell-app-frame {
+  width: 100%;
+  height: calc(100vh - var(--shell-topbar-height) - var(--shell-footer-height));
+  border: none;
+  background: #fff;
+}
+
 /* Footer */
 .shell-footer {
   background: var(--shell-bg-alt);
